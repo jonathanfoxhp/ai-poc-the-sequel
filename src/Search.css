@@ -1,0 +1,204 @@
+:root {
+  /* max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem; */
+  @apply bg-[#E0E1EE];
+}
+
+body {
+  @apply items-center justify-center;
+}
+
+.title {
+  @apply text-[#191A22] text-[70px] font-light text-center;
+}
+
+.jumbo-input {
+  @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full px-8 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
+}
+
+.prompt-suggestion {
+  @apply bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 text-hpxBlue rounded-full h-12 px-4;
+}
+
+.date-subtitle {
+  @apply text-[#525365] text-[16px] text-center;
+}
+
+@font-face {
+  font-family: "FormaDJRUI";
+  src: url("/FormaDJRUI.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font */
+body {
+  font-family: "FormaDJRUI", sans-serif;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header {
+  @apply w-full z-[100] flex  items-center justify-between py-2 px-20 fixed top-0 w-full;
+}
+
+.header__right {
+  @apply flex gap-3 items-end justify-center;
+}
+
+.toggle-group {
+  @apply inline-flex gap-0.5 rounded-full bg-[#b5b7cb]/20 backdrop-blur-sm;
+}
+
+.avatar {
+  @apply w-10 h-10 bg-hpxWhite text-hpxBlue text-lg rounded-full flex items-center justify-center;
+}
+
+.grey-glass-card {
+  background: linear-gradient(
+    124deg,
+    rgba(255, 255, 255, 0.3) 15.64%,
+    rgba(255, 255, 255, 0.12) 94.42%
+  );
+}
+
+.white-glass-card {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.card {
+  @apply rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-4 pb-4 w-[236px];
+}
+
+.card h4 {
+  @apply text-[#363636] text-base font-semibold gap-2 m-0 relative;
+}
+
+.card-controls {
+  @apply text-[#525365] text-sm font-semibold flex gap-2 m-0 items-end justify-between;
+}
+
+.card-controls p {
+  @apply w-[75%];
+}
+
+.ai-switch-root {
+  @apply relative duration-300 transition-all h-[25px] w-[42px] rounded-full bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 outline-none cursor-pointer;
+}
+
+.ai-switch-thumb {
+  @apply flex items-center justify-center size-[21px] translate-x-0.5 rounded-full transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px];
+  background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
+}
+
+.ai-switch-root[data-state="checked"] {
+  background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
+}
+
+.ai-switch-root[data-state="checked"]:hover {
+  background: linear-gradient(315deg, #3bb7f6 0%, #4759f5 100%);
+}
+
+.ai-switch-root[data-state="checked"] .ai-switch-thumb {
+  @apply !bg-hpxWhite;
+  background: none;
+}
+
+.ai-switch-root[data-state="unchecked"] .ai-switch-thumb img {
+  @apply hidden;
+}
+
+.device-card {
+  @apply relative rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-[90px] pb-4 w-[236px] overflow-hidden;
+}
+
+.device-card-controls {
+  @apply text-[#525365] text-base font-semibold;
+}
+
+.device-card h4 {
+  @apply text-[#363636] text-base font-semibold gap-2 m-0;
+}
+
+.device-card--blue {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.device-card--purple {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.content {
+  animation: slideUp 1s ease-out;
+  margin: 0;
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start !important;
+  place-items: center;
+  min-width: 320px;
+  min-height: 150vh;
+  position: relative; /* Ensure it stays above the background */
+  z-index: 1;
+  color: black; /* Adjust text color for readability */
+}
+
+.background-flourish-container {
+  background: url("/backgroundFlourish.png");
+  position: fixed; /* Make it stay in place while scrolling */
+  top: -50%;
+  left: 0;
+  width: 100%; /* Cover the full width of the viewport */
+  height: 100vh; /* Cover the full height of the viewport */
+  background-position: top center; /* Align image at the top center */
+  background-size: contain; /* Ensure the image covers the area */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -1; /* Send it behind other content */
+}
+
+.device-card-flourish {
+  position: absolute; /* Position the image relative to the card */
+  top: 0; /* Align to the top */
+  right: 0; /* Align to the right */
+  z-index: -1; /* Send it behind other content */
+
+  object-fit: cover; /* Ensure the image maintains its aspect ratio */
+}
+
+.slider {
+  @apply relative flex h-5 w-[200px] touch-none select-none items-center;
+}
+
+.slider__range {
+  @apply absolute h-full rounded-full bg-hpxBlue hover:bg-hpxBlue-hover transition-colors duration-300;
+}
+
+.slider__track {
+  @apply relative h-[3px] grow rounded-full bg-hpxGrey;
+}
+
+.slider__thumb {
+  @apply block cursor-grab active:cursor-grabbing size-5 rounded-full bg-hpxBlue hover:bg-hpxBlue-hover transition-colors duration-300  shadow-sm shadow-black focus:shadow-black focus:outline-none;
+}

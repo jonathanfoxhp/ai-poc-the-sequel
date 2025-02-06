@@ -1,0 +1,16 @@
+.splash-image-container {
+  background: url("/image.png");
+  position: fixed; /* Make it stay in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the full width of the viewport */
+  height: 100vh; /* Cover the full height of the viewport */
+  background-position: top center; /* Align image at the top center */
+  background-size: cover; /* Ensure the image covers the area */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -1; /* Send it behind other content */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

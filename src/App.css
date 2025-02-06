@@ -1,0 +1,310 @@
+:root {
+  @apply bg-[#E0E1EE] text-hpxCharcoal mb-16;
+}
+
+body {
+  @apply items-center justify-center;
+}
+
+.title {
+  @apply text-[#191A22] text-[70px] font-light text-center;
+}
+
+.date-subtitle {
+  @apply text-[#525365] text-[16px] text-center;
+}
+
+.divider {
+  @apply border-b border-solid border-[#D1D2E4];
+}
+
+@font-face {
+  font-family: "FormaDJRUI";
+  src: url("/FormaDJRUI.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FormaDJRUI";
+  src: url("/FormaDJRUI.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FormaDJRUI";
+  src: url("/FormaDJRUI.ttf") format("truetype");
+  font-weight: 100;
+  font-style: light;
+}
+
+/* Apply the font */
+body {
+  font-family: "FormaDJRUI", sans-serif;
+}
+
+.primary-alert {
+  @apply flex  justify-between items-center h-[72px] content-between px-6  text-white rounded-xl text-xl w-[46.375rem];
+
+  background: linear-gradient(232deg, #5d67bf 0%, #4759f5 87.78%);
+}
+
+.primary-alert__left {
+  @apply flex items-center gap-4;
+}
+
+.primary-alert button {
+  @apply text-lg hover:text-hpxWhite-hover transition-all duration-300;
+}
+
+.secondary-alert {
+  @apply flex  justify-between items-center h-[46px] content-between  bg-hpxLightBlue text-hpxBlue rounded-xl text-sm px-4 gap-7;
+}
+
+.secondary-alert__left {
+  @apply flex items-center gap-3;
+}
+
+.secondary-alert button {
+  @apply text-xs hover:text-hpxBlue-hover transition-all duration-300 bg-white rounded-md px-2 h-6 flex items-center;
+}
+
+header {
+  @apply w-full flex  items-center justify-between py-2 px-20 fixed top-0 w-full;
+}
+
+.header__right {
+  @apply flex gap-3 items-end justify-center;
+}
+
+.toggle-group {
+  @apply inline-flex gap-0.5 rounded-full bg-hpxGrey/20 backdrop-blur-sm;
+}
+
+.icon-button--basic {
+  @apply w-10 h-10 bg-hpxMediumGrey hover:bg-hpxMediumGrey-hover bg-opacity-20 text-[#191A22] rounded-full;
+}
+
+.icon-button--sparkle {
+  @apply w-10 h-10 bg-opacity-20 text-white rounded-full text-white;
+  background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
+}
+
+.icon-button--sparkle:hover {
+  background: linear-gradient(315deg, #4759f5 0%, #4759f5 100%);
+}
+
+.avatar {
+  @apply w-10 h-10  text-lg rounded-full flex items-center justify-center;
+  background-image: url("/avatarbg.png"); /* Replace with your image URL */
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.icon-button--basic,
+.avatar,
+.icon-button--sparkle {
+  @apply flex items-center justify-center transition-all duration-300;
+}
+
+.icon-button--basic img,
+.icon-button--sparkle img {
+  @apply w-6 h-6;
+}
+
+.grey-glass-card {
+  background: linear-gradient(
+    124deg,
+    rgba(255, 255, 255, 0.3) 15.64%,
+    rgba(255, 255, 255, 0.12) 94.42%
+  );
+}
+
+.white-glass-card {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.card {
+  @apply rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-4 pb-4 w-[236px];
+}
+
+.card h4 {
+  @apply text-[#363636] text-base font-semibold gap-2 m-0 relative;
+}
+
+.card-controls {
+  @apply text-[#525365] text-sm font-semibold flex gap-2 m-0 items-end justify-between;
+}
+
+.card-controls p {
+  @apply w-[75%];
+}
+
+.switch-root {
+  @apply cursor-pointer relative h-[25px] w-[42px] rounded-full bg-hpxGrey hover:bg-hpxGrey-hover duration-300 transition-colors outline-none;
+}
+
+.switch-thumb {
+  @apply bg-white flex items-center justify-center size-[21px] translate-x-0.5 rounded-full transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px];
+}
+
+.switch-root[data-state="checked"] {
+  @apply bg-hpxBlue hover:bg-hpxBlue-hover transition-all duration-300;
+}
+
+.ghost-button {
+  @apply text-base text-hpxBlue hover:text-hpxBlue-hover transition-all duration-300;
+}
+
+.device-card {
+  @apply relative rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-[90px] pb-4 w-[236px] overflow-hidden;
+}
+
+.device-card-controls {
+  @apply text-[#525365] text-base font-semibold;
+}
+
+.device-card h4 {
+  @apply text-[#363636] text-base font-semibold gap-2 m-0;
+}
+
+.device-card--blue {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.device-card--purple {
+  background: linear-gradient(
+    124deg,
+    #fff 15.64%,
+    rgba(255, 255, 255, 0.4) 94.42%
+  );
+}
+
+.background-flourish-container {
+  scale: 2;
+  background: url("/backgroundFlourish.png");
+  position: fixed; /* Make it stay in place while scrolling */
+  top: -50%;
+  left: 0;
+  width: 100%; /* Cover the full width of the viewport */
+  height: 100vh; /* Cover the full height of the viewport */
+  background-position: top center; /* Align image at the top center */
+  background-size: contain; /* Ensure the image covers the area */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -1; /* Send it behind other content */
+}
+
+.background-image-container {
+  @apply opacity-50;
+  background: url("/frontlaptop.png");
+  position: fixed; /* Make it stay in place while scrolling */
+  top: -5%;
+  right: 0;
+  width: 1200px; /* Cover the full width of the viewport */
+  height: 1000px; /* Cover the full height of the viewport */
+  background-position: top right; /* Align image at the top center */
+  background-size: contain; /* Ensure the image covers the area */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -1; /* Send it behind other content */
+}
+
+.device-card-flourish {
+  position: absolute; /* Position the image relative to the card */
+  top: 0; /* Align to the top */
+  right: 0; /* Align to the right */
+  z-index: -1; /* Send it behind other content */
+
+  object-fit: cover; /* Ensure the image maintains its aspect ratio */
+}
+
+.radio {
+  @apply flex items-center justify-between gap-2 w-full;
+}
+
+.radio__indicator-outer {
+  @apply rounded-full border-hpxBlue border;
+}
+
+.radio__indicator-inner {
+  @apply bg-hpxBlue size-4 rounded-full m-[6px];
+}
+
+.primary-button {
+  @apply bg-hpxBlue hover:bg-hpxBlue-hover transition-all duration-300  text-white h-12 px-6 rounded-full text-base cursor-pointer;
+}
+
+.secondary-button {
+  @apply border-hpxCharcoal hover:bg-hpxWhite transition-all duration-300 
+
+  text-hpxCharcoal 
+  border-solid border  h-12 px-6 rounded-full text-base cursor-pointer;
+}
+
+.header-button {
+  @apply bg-hpxCharcoal/10 hover:bg-hpxCharcoal/20 transition-colors duration-300 border-solid border text-hpxCharcoal h-10 px-4 rounded-full text-base cursor-pointer flex items-center gap-2;
+}
+
+.calendar {
+  @apply relative flex flex-col gap-9;
+}
+
+.calendar__bar,
+.calendar__fancyBar {
+  @apply flex gap-2 items-center;
+}
+.calendar__bar time {
+  @apply text-[#c7c8d3] text-xs whitespace-nowrap;
+}
+
+.calendar__bar div {
+  @apply bg-[#c7c8d3]  h-px w-full;
+}
+
+.calendar__fancyBar time {
+  @apply text-hpxCharcoal font-medium text-xs whitespace-nowrap;
+}
+
+.calendar__fancyBar div {
+  @apply h-px w-full relative;
+  background: linear-gradient(
+    270deg,
+    rgba(71, 89, 245, 0.8) 0%,
+    rgba(59, 183, 246, 0.8) 100%
+  );
+}
+
+.calendar__fancyBar div::after {
+  @apply size-3 rounded-full;
+  background: linear-gradient(
+    270deg,
+    rgba(71, 89, 245, 0.8) 0%,
+    rgba(59, 183, 246, 0.8) 100%
+  );
+}
+
+.calendar__event {
+  width: calc(100% - 56px);
+  @apply ml-[56px] absolute -bottom-1  h-16 bg-[#D0EBFF] bg-opacity-75 rounded-xl px-5 pt-3 border-l-[12px] border-[#3EA5F6] flex justify-between;
+}
+
+.calendar__event span {
+  @apply text-[#4759F5] text-sm;
+}
+
+.calendar__event time {
+  @apply text-[#7a7a80] text-xs whitespace-nowrap;
+}
+
+.close-button {
+  @apply cursor-pointer;
+}
