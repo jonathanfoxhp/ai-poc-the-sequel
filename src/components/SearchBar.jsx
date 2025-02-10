@@ -21,9 +21,10 @@ function SearchBar({
         value={value}
         onChange={onChange}
       />
-      <span className="absolute right-10 top-3 flex gap-3">
+      <span className="absolute right-2 top-3 flex gap-3">
         <img src={micOnIcon} />
         <PrimaryIconButton
+          disabled
           onClick={onPrimaryButtonClick}
           icon={<img src={arrowUpIcon} />}
         />

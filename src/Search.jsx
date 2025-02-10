@@ -85,7 +85,7 @@ function Search() {
     <>
       <div className="background-flourish-container" />
       <Header page="search" />
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center content-wrapper">
         <div className="content mt-[4.5rem]">
           <div className="date-subtitle mb-2">Hello, Adam</div>
           <h1 className="title mb-12 mt-0 leading-none">
@@ -97,19 +97,23 @@ function Search() {
             onKeyDown={handleKeyDown}
             onPrimaryButtonClick={() => handleNavigate("/audio")}
           />
-          <SearchPromptList />
+          <div className="mb-14 w-full">
+            <SearchPromptList />
+          </div>
           <WatchMovie />
         </div>
       </div>
       <div className="footer-search">
         <div className="w-[740px]">
+          <div className="mb-6 w-full">
+            <SearchPromptList />
+          </div>
           <SearchBar
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleKeyDown}
             onPrimaryButtonClick={() => handleNavigate("/audio")}
           />
-          <SearchPromptList />
         </div>
       </div>
     </>

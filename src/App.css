@@ -1,13 +1,9 @@
 :root {
-  @apply bg-[#E0E1EE] text-hpxCharcoal mb-16;
+  @apply bg-[#E0E1EE] text-hpxCharcoal;
 }
 
 body {
   @apply items-center justify-center;
-}
-
-.title {
-  @apply text-[#191A22] text-[70px] font-light text-center;
 }
 
 .date-subtitle {
@@ -88,7 +84,12 @@ header {
 
 .icon-button--primary {
   @apply flex items-center justify-center
-  w-10 h-10 bg-hpxBlue hover:bg-hpxBlue-hover bg-opacity-20 text-[#191A22] rounded-full;
+  w-10 h-10 bg-hpxBlue hover:bg-hpxBlue-hover  text-[#FFFFFF] rounded-full;
+}
+
+.icon-button--primary[disabled="disabled"],
+.icon-button--primary:disabled {
+  @apply !text-[#B5B7CB] !bg-[#EDEEFE] cursor-not-allowed;
 }
 
 .icon-button--sparkle {
@@ -353,7 +354,7 @@ header {
 }
 
 .accordion-content {
-  @apply my-8;
+  @apply py-8;
 }
 
 .copy-paste {

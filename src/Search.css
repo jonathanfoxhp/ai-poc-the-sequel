@@ -2,7 +2,16 @@
   /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem; */
-  @apply bg-[#E0E1EE];
+  @apply bg-[#E0E1EE] min-h-screen;
+
+  --HPx-play-1: linear-gradient(
+      88deg,
+      rgba(114, 74, 233, 0.15) 6.09%,
+      rgba(71, 89, 245, 0.15) 35.51%,
+      rgba(39, 89, 255, 0.15) 69.12%,
+      rgba(12, 130, 240, 0.1) 94.8%
+    ),
+    rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -10,11 +19,11 @@ body {
 }
 
 .title {
-  @apply text-[#191A22] text-[70px] font-light text-center;
+  @apply text-[#191A22] text-[40px] text-center;
 }
 
 .jumbo-input {
-  @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full px-8 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
+  @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full pl-8 pr-2 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
 }
 
 .ai-prompt-button {
@@ -37,8 +46,20 @@ body {
   backdrop-filter: blur(2px);
 }
 
+.ai-prompt-button span {
+  background: linear-gradient(
+    88deg,
+    #3719e2 2.71%,
+    #192ee3 65.1%,
+    #1579e3 101.62%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .date-subtitle {
-  @apply text-[#525365] text-[16px] text-center;
+  @apply text-[#525365] text-sm text-center;
 }
 
 @font-face {
@@ -182,6 +203,10 @@ header {
   color: black; /* Adjust text color for readability */
 }
 
+.content-wrapper {
+  min-height: calc(100vh - 192px);
+}
+
 .background-flourish-container {
   background: url("/backgroundFlourish.png");
   position: fixed; /* Make it stay in place while scrolling */
@@ -197,18 +222,7 @@ header {
 
 .footer-search {
   @apply py-8 w-full flex items-center justify-center;
-  opacity: 0.2;
-  background: var(
-    --HPx-play-1,
-    linear-gradient(
-      88deg,
-      rgba(114, 74, 233, 0.65) 6.09%,
-      rgba(71, 89, 245, 0.65) 35.51%,
-      rgba(39, 89, 255, 0.65) 69.12%,
-      rgba(12, 130, 240, 0.65) 94.8%
-    ),
-    rgba(73, 79, 129, 0.61)
-  );
+  background: var(--HPx-play-1);
 }
 
 .device-card-flourish {

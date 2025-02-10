@@ -1,6 +1,6 @@
-function BasicIconButton({ icon, ...other }) {
+function BasicIconButton({ icon, disabled, ...other }) {
   return (
-    <button className="icon-button--primary" {...other}>
+    <button className="icon-button--primary" disabled={disabled} {...other}>
       {icon}
     </button>
   );
