@@ -17,8 +17,24 @@ body {
   @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full px-8 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
 }
 
-.prompt-suggestion {
-  @apply bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 text-hpxBlue rounded-full h-12 px-4;
+.ai-prompt-button {
+  @apply hover:bg-hpxWhite-hover transition-all duration-300 rounded-full h-12 px-4;
+  /* background: linear-gradient(
+    88deg,
+    #3719e2 2.71%,
+    #192ee3 65.1%,
+    #1579e3 101.62%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: #3719e2;
+  border-radius: var(--components-button-radius, 999px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  background: rgba(253, 253, 255, 0.35);
+
+  backdrop-filter: blur(2px);
 }
 
 .date-subtitle {
@@ -151,15 +167,16 @@ header {
 }
 
 .content {
+  @apply flex flex-col items-center w-[740px];
   animation: slideUp 1s ease-out;
   margin: 0;
   padding-top: 120px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: flex-start !important;
+  align-items: flex-start !important; */
   place-items: center;
   min-width: 320px;
-  min-height: 150vh;
+  min-height: calc(70vh);
   position: relative; /* Ensure it stays above the background */
   z-index: 1;
   color: black; /* Adjust text color for readability */
@@ -176,6 +193,22 @@ header {
   background-size: contain; /* Ensure the image covers the area */
   background-repeat: no-repeat; /* Prevent tiling */
   z-index: -1; /* Send it behind other content */
+}
+
+.footer-search {
+  @apply py-8 w-full flex items-center justify-center;
+  opacity: 0.2;
+  background: var(
+    --HPx-play-1,
+    linear-gradient(
+      88deg,
+      rgba(114, 74, 233, 0.65) 6.09%,
+      rgba(71, 89, 245, 0.65) 35.51%,
+      rgba(39, 89, 255, 0.65) 69.12%,
+      rgba(12, 130, 240, 0.65) 94.8%
+    ),
+    rgba(73, 79, 129, 0.61)
+  );
 }
 
 .device-card-flourish {

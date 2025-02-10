@@ -86,6 +86,11 @@ header {
   @apply w-10 h-10 bg-hpxMediumGrey hover:bg-hpxMediumGrey-hover bg-opacity-20 text-[#191A22] rounded-full;
 }
 
+.icon-button--primary {
+  @apply flex items-center justify-center
+  w-10 h-10 bg-hpxBlue hover:bg-hpxBlue-hover bg-opacity-20 text-[#191A22] rounded-full;
+}
+
 .icon-button--sparkle {
   @apply w-10 h-10 bg-opacity-20 text-white rounded-full text-white;
   background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
@@ -307,4 +312,54 @@ header {
 
 .close-button {
   @apply cursor-pointer;
+}
+
+/* new components */
+
+.ai-text {
+  @apply flex gap-3 items-center;
+}
+
+.ai-text > span {
+  @apply bg-gradient-to-r from-[#3719E2] via-[#192EE3] to-[#1579E3] bg-clip-text text-transparent text-lg;
+}
+
+.ai-conversation-pill {
+  @apply border h-10 gap-2 flex rounded-full px-4 text-base border-solid border-hpxBlue items-center justify-center;
+}
+
+.ai-conversation-pill--checked {
+  @apply bg-[#C4CAFF] border-[#C4CAFF] text-[#2C3798];
+}
+
+.accordion-root {
+  @apply flex flex-col gap-6;
+}
+
+.accordion {
+  @apply text-[#212121] bg-[#FFFFFF] rounded-3xl px-8;
+}
+
+.accordion-trigger {
+  @apply h-[56px] w-full flex items-center text-xl font-medium justify-between;
+}
+
+.accordion > h3 {
+  @apply w-full h-[56px];
+}
+
+.accordion-trigger[data-state="open"] img {
+  @apply rotate-180;
+}
+
+.accordion-content {
+  @apply my-8;
+}
+
+.copy-paste {
+  @apply flex gap-2 items-center text-base cursor-pointer;
+}
+
+.copy-paste > span {
+  @apply text-[#4759F5];
 }

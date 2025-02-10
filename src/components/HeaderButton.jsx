@@ -1,4 +1,4 @@
-function SecondaryButton({ icon, label, ...other }) {
+function HeaderButton({ icon, label, ...other }) {
   return (
     <button className="header-button" {...other}>
       {icon}
@@ -7,4 +7,4 @@ function SecondaryButton({ icon, label, ...other }) {
   );
 }
 
-export default SecondaryButton;
+export default HeaderButton;
