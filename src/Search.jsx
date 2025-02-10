@@ -86,7 +86,11 @@ function Search() {
       <div className="background-flourish-container" />
       <Header page="search" />
       <div className="flex items-center justify-center">
-        <div className="content">
+        <div className="content mt-[4.5rem]">
+          <div className="date-subtitle mb-2">Hello, Adam</div>
+          <h1 className="title mb-12 mt-0 leading-none">
+            How can I help you today?
+          </h1>
           <SearchBar
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}

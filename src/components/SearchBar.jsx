@@ -12,7 +12,7 @@ function SearchBar({
   ...other
 }) {
   return (
-    <div className="relative mt-[4.5rem] w-full">
+    <div className="relative w-full">
       <input
         type="text"
         className="jumbo-input mb-4"
