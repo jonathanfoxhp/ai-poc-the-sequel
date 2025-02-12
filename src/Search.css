@@ -26,6 +26,19 @@ body {
   @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full pl-8 pr-2 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
 }
 
+.prompt-while-loading-text {
+  @apply text-2xl text-center;
+  background: linear-gradient(
+    88deg,
+    #3719e2 2.71%,
+    #192ee3 65.1%,
+    #1579e3 101.62%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .ai-prompt-button {
   @apply hover:bg-hpxWhite-hover transition-all duration-300 rounded-full h-12 px-4;
   /* background: linear-gradient(
@@ -221,7 +234,7 @@ header {
 }
 
 .footer-search {
-  @apply py-8 w-full flex items-center justify-center;
+  @apply py-8 w-full flex items-center justify-center mt-12;
   background: var(--HPx-play-1);
 }
 

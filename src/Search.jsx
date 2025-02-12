@@ -1,34 +1,21 @@
 import { useState, useEffect } from "react";
-import aiIcon from "/icons/ai.svg";
-import aiToggleIcon from "/icons/aiToggle.svg";
-import micOnIcon from "/icons/micOn.svg";
-import PrimaryIconButton from "./components/PrimaryIconButton";
-import PrimaryButton from "./components/PrimaryButton";
-import AIConversationPill from "./components/AIConversationPill";
-import AIPromptButton from "./components/AIPromptButton";
-import AIText from "./components/AIText";
 import Header from "./components/Header";
-import PrimaryAlert from "./components/PrimaryAlert";
 import { useNavigate } from "react-router-dom";
-import PartialAudioSettings from "./PartialAudioSettings";
 import WatchMovie from "./WatchMovie";
-import SearchPromptList from "./SearchPromptList";
+//import SearchPromptList from "./SearchPromptList";
+import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
+import aiLoadingIndicator from "/aiLoadingIndicator.svg";
 
 import "./Search.css";
 
 function Search() {
   const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [showResults, setShowResults] = useState(false); // Loading state
 
-  const [isMovieMode, setIsMovieMode] = useState(false);
   const [partialSettingsId, setPartialSettingsId] = useState(null);
   const [searchText, setSearchText] = useState("");
-
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertTitle, setAlertTitle] = useState(null);
-  const [alertDestination, setAlertDestination] = useState(null);
-
-  // const [isHeaderVisible, setIsHeaderVisible] = useState(true); // State to control header visibility
+  const [promptText, setPromptText] = useState("");
 
   const navigate = useNavigate();
 
@@ -39,42 +26,24 @@ function Search() {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      setIsLoading(true);
-      setTimeout(() => {
-        const prompt = searchText;
-        const newAlertTitle =
-          "Your equalizer has been adjusted to optimize dialogue";
-        setIsLoading(false);
-        setAlertTitle(newAlertTitle);
-        setAlertDestination(
-          `/audio?settingsChanged=equalizer&prompt=${prompt}&changeSummary=${newAlertTitle}`
-        );
-        setPartialSettingsId("optimizeDialogue");
-        setShowAlert(true);
-      }, 2000);
+      executePrompt();
     }
   };
 
-  const onMovieModeChange = (e) => {
-    setIsMovieMode(e);
-
-    if (e) {
-      const implicitPrompt = "Enable Movie mode";
-      const newAlertTitle = "Your settings have been adjusted for Movie mode";
-      setPartialSettingsId(null);
-      setAlertTitle(newAlertTitle);
-      setAlertDestination(
-        `/audio?settingsChanged=output&prompt=${implicitPrompt}&changeSummary=${newAlertTitle}`
-      );
-      setShowAlert(true);
-    }
+  const executePrompt = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      const newPromptText = searchText;
+      setPromptText(newPromptText);
+      setShowResults(true);
+      setIsLoading(false);
+    }, 5000);
   };
 
-  const onClose = (e) => {
-    console.log(e);
-    setSearchText("");
-    setPartialSettingsId(null);
-    setShowAlert(false);
+  //not used yet
+  const onPromptButtonClick = (promptButtonText) => {
+    setPromptText(promptButtonText);
+    executePrompt();
   };
 
   useEffect(() => {
@@ -85,37 +54,70 @@ function Search() {
     <>
       <div className="background-flourish-container" />
       <Header page="search" />
+
       <div className="flex items-center justify-center content-wrapper">
         <div className="content mt-[4.5rem]">
-          <div className="date-subtitle mb-2">Hello, Adam</div>
-          <h1 className="title mb-12 mt-0 leading-none">
-            How can I help you today?
-          </h1>
-          <SearchBar
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onPrimaryButtonClick={() => handleNavigate("/audio")}
-          />
-          <div className="mb-14 w-full">
-            <SearchPromptList />
-          </div>
-          <WatchMovie />
+          {!showResults && (
+            <>
+              <div className="date-subtitle mb-2">Hello, Adam</div>
+              <div className="mb-12">
+                <h1 className="title mb6 mt-0 !leading-none">
+                  How can I help you today?
+                </h1>
+                {isLoading && (
+                  <div className="prompt-while-loading-text mt-6 !leading-none">
+                    {searchText}
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
+          {!isLoading && !showResults && (
+            <SearchBar
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onPrimaryButtonClick={executePrompt}
+              primaryButtonDisabled={searchText.length < 1}
+            />
+          )}
+
+          {isLoading && (
+            <img
+              src={aiLoadingIndicator}
+              className="animate-ping [animation-duration:2s]"
+            />
+          )}
+
+          {!isLoading && !showResults && (
+            <div className="gap-2 flex items-start w-full mb-14">
+              <AIPromptButton label="how do I upgrade my PC?" />
+              <AIPromptButton label="how do I speed up my games?" />
+              <AIPromptButton label="how do I replace my PC?" />
+            </div>
+          )}
+          {showResults && <WatchMovie />}
         </div>
       </div>
-      <div className="footer-search">
-        <div className="w-[740px]">
-          <div className="mb-6 w-full">
-            <SearchPromptList />
+
+      {showResults && (
+        <div className="footer-search">
+          <div className="w-[740px]">
+            <div className="gap-2 flex items-start w-full mb-6">
+              <AIPromptButton label="how do I upgrade my PC?" />
+              <AIPromptButton label="how do I speed up my games?" />
+              <AIPromptButton label="how do I replace my PC?" />
+            </div>
+            <SearchBar
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onPrimaryButtonClick={() => handleNavigate("/audio")}
+            />
           </div>
-          <SearchBar
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onPrimaryButtonClick={() => handleNavigate("/audio")}
-          />
         </div>
-      </div>
+      )}
     </>
   );
 }

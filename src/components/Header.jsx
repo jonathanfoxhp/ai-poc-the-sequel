@@ -59,15 +59,9 @@ function Header({ hasBack, page = "search" }) {
       <div>
         <div className="toggle-group">
           {page === "settings" ? (
-            <SparkleIconButton
-              onClick={() => handleNavigate("/audio")}
-              icon={<img src={whiteDevicesIcon} />}
-            />
+            <SparkleIconButton icon={<img src={whiteDevicesIcon} />} />
           ) : (
-            <BasicIconButton
-              onClick={() => handleNavigate("/audio")}
-              icon={<img src={devicesIcon} />}
-            />
+            <BasicIconButton icon={<img src={devicesIcon} />} />
           )}
           {page === "search" ? (
             <SparkleIconButton

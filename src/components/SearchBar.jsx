@@ -8,6 +8,7 @@ function SearchBar({
   value,
   onChange,
   onPrimaryButtonClick,
+  primaryButtonDisabled,
   isLoading,
   ...other
 }) {
@@ -24,7 +25,7 @@ function SearchBar({
       <span className="absolute right-2 top-3 flex gap-3">
         <img src={micOnIcon} />
         <PrimaryIconButton
-          disabled
+          disabled={primaryButtonDisabled}
           onClick={onPrimaryButtonClick}
           icon={<img src={arrowUpIcon} />}
         />
