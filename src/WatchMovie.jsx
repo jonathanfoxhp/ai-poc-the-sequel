@@ -25,9 +25,9 @@ function WatchMovie() {
   };
 
   return (
-    <AccordionRoot className="w-full" defaultValue="item-1">
+    <>
       <Accordion label="I want to watch a movie" value="item-1" defaultOpen>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           {conversationStage >= 0 && (
             <>
               <AIText label="Sure! To optimize your movie experience you can:" />
@@ -39,7 +39,6 @@ function WatchMovie() {
                 <li>5. Switch display preset to movie mode</li>
                 <li>6. Turn on display HDR</li>
               </ol>
-              <br />
               <div className="font-medium text-base">
                 Do you want me to activate all six settings?
               </div>
@@ -116,7 +115,7 @@ function WatchMovie() {
           )}
         </div>
       </Accordion>
-    </AccordionRoot>
+    </>
   );
 }
 

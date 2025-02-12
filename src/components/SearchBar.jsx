@@ -4,6 +4,7 @@ import micOnIcon from "/icons/micOn.svg";
 import PrimaryIconButton from "./PrimaryIconButton";
 
 function SearchBar({
+  placeholder,
   onKeyDown,
   value,
   onChange,
@@ -17,12 +18,12 @@ function SearchBar({
       <input
         type="text"
         className="jumbo-input mb-4"
-        placeholder="Ask me anything about optimizing device settings..."
+        placeholder={placeholder}
         onKeyDown={onKeyDown}
         value={value}
         onChange={onChange}
       />
-      <span className="absolute right-2 top-3 flex gap-3">
+      <span className="absolute right-2 top-2 flex gap-3">
         <img src={micOnIcon} />
         <PrimaryIconButton
           disabled={primaryButtonDisabled}

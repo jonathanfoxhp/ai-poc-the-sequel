@@ -23,7 +23,7 @@ body {
 }
 
 .jumbo-input {
-  @apply w-full cursor-text bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 h-16 rounded-full pl-8 pr-2 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
+  @apply w-full cursor-text bg-[#fff] hover:bg-[#fff] transition-all duration-300 h-16 rounded-full pl-8 pr-2 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
 }
 
 .prompt-while-loading-text {
@@ -40,7 +40,10 @@ body {
 }
 
 .ai-prompt-button {
-  @apply hover:bg-hpxWhite-hover transition-all duration-300 rounded-full h-12 px-4;
+  @apply bg-[#FDFDFF] bg-opacity-35  hover:!bg-opacity-70 active:!bg-opacity-100 
+  
+  
+  transition-all duration-300 rounded-full h-12 px-4;
   /* background: linear-gradient(
     88deg,
     #3719e2 2.71%,
@@ -53,8 +56,6 @@ body {
   color: #3719e2;
   border-radius: var(--components-button-radius, 999px);
   border: 1px solid rgba(255, 255, 255, 0.6);
-
-  background: rgba(253, 253, 255, 0.35);
 
   backdrop-filter: blur(2px);
 }
@@ -72,7 +73,7 @@ body {
 }
 
 .date-subtitle {
-  @apply text-[#525365] text-sm text-center;
+  @apply text-[#525365] text-2xl leading-none text-center;
 }
 
 @font-face {
@@ -218,19 +219,6 @@ header {
 
 .content-wrapper {
   min-height: calc(100vh - 192px);
-}
-
-.background-flourish-container {
-  background: url("/backgroundFlourish.png");
-  position: fixed; /* Make it stay in place while scrolling */
-  top: -50%;
-  left: 0;
-  width: 100%; /* Cover the full width of the viewport */
-  height: 100vh; /* Cover the full height of the viewport */
-  background-position: top center; /* Align image at the top center */
-  background-size: contain; /* Ensure the image covers the area */
-  background-repeat: no-repeat; /* Prevent tiling */
-  z-index: -1; /* Send it behind other content */
 }
 
 .footer-search {

@@ -6,8 +6,10 @@ export default {
       colors: {
         hpxBlue: {
           DEFAULT: "#4759F5",
-          hover: "#3845c0",
+          hover: "#3543C0",
+          active: "#2C3798",
         },
+
         hpxWhite: {
           DEFAULT: "#F5F6FF",
           hover: "#EBEDFF",

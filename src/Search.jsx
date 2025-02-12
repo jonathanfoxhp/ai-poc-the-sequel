@@ -2,62 +2,86 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import { useNavigate } from "react-router-dom";
 import WatchMovie from "./WatchMovie";
+import DisplayFlicker from "./DisplayFlicker";
 //import SearchPromptList from "./SearchPromptList";
 import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
 import aiLoadingIndicator from "/aiLoadingIndicator.svg";
+import AccordionRoot from "./components/AccordionRoot";
 
 import "./Search.css";
 
 function Search() {
   const [isLoading, setIsLoading] = useState(false); // Loading state
-  const [showResults, setShowResults] = useState(false); // Loading state
+  const [showWatchMovie, setShowWatchMovie] = useState(false); // Loading state
+  const [showDisplayFlicker, setShowDisplayFlicker] = useState(false); // Loading state
 
-  const [partialSettingsId, setPartialSettingsId] = useState(null);
-  const [searchText, setSearchText] = useState("");
-  const [promptText, setPromptText] = useState("");
+  const [primarySearchText, setPrimarySearchText] = useState("");
+  const [primaryPromptText, setPrimaryPromptText] = useState("");
 
-  const navigate = useNavigate();
+  const [footerSearchText, setFooterSearchText] = useState("");
+  const [footerPromptText, setFooterPromptText] = useState("");
 
   const scrollToTop = () => {
     console.log("scroll");
     window.scrollTo(0, 80);
   };
 
-  const handleKeyDown = (e) => {
+  const handlePrimarySearchKeyDown = (e) => {
     if (e.key === "Enter") {
-      executePrompt();
+      executePrimarySearchPrompt();
     }
   };
 
-  const executePrompt = () => {
+  const executePrimarySearchPrompt = () => {
     setIsLoading(true);
     setTimeout(() => {
-      const newPromptText = searchText;
-      setPromptText(newPromptText);
-      setShowResults(true);
+      const newPromptText = primarySearchText;
+      setPrimaryPromptText(newPromptText);
+      setShowWatchMovie(true);
+      setIsLoading(false);
+    }, 5000);
+  };
+
+  const handleFooterSearchKeyDown = (e) => {
+    if (e.key === "Enter") {
+      executeFooterSearchPrompt();
+    }
+  };
+
+  const executeFooterSearchPrompt = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      const newPromptText = footerPromptText;
+      setFooterPromptText(newPromptText);
+      setShowDisplayFlicker(true);
       setIsLoading(false);
     }, 5000);
   };
 
   //not used yet
-  const onPromptButtonClick = (promptButtonText) => {
-    setPromptText(promptButtonText);
-    executePrompt();
-  };
+  // const onPromptButtonClick = (promptButtonText) => {
+  //   setPrimaryPromptText(promptButtonText);
+  //   executePrimarySearchPrompt();
+  // };
 
-  useEffect(() => {
-    scrollToTop();
-  }, [partialSettingsId]);
+  // useEffect(() => {
+  //   scrollToTop();
+  // }, [partialSettingsId]);
 
   return (
     <>
-      <div className="background-flourish-container" />
+      <div
+        className={`background-flourish-container ${
+          isLoading ? "flourish-spin" : ""
+        }`}
+      />
+
       <Header page="search" />
 
       <div className="flex items-center justify-center content-wrapper">
         <div className="content mt-[4.5rem]">
-          {!showResults && (
+          {!showWatchMovie && (
             <>
               <div className="date-subtitle mb-2">Hello, Adam</div>
               <div className="mb-12">
@@ -66,20 +90,21 @@ function Search() {
                 </h1>
                 {isLoading && (
                   <div className="prompt-while-loading-text mt-6 !leading-none">
-                    {searchText}
+                    {primaryPromptText}
                   </div>
                 )}
               </div>
             </>
           )}
 
-          {!isLoading && !showResults && (
+          {!isLoading && !showWatchMovie && (
             <SearchBar
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onPrimaryButtonClick={executePrompt}
-              primaryButtonDisabled={searchText.length < 1}
+              placeholder="Ask me anything about optimizing device settings..."
+              value={primarySearchText}
+              onChange={(e) => setPrimarySearchText(e.target.value)}
+              onKeyDown={handlePrimarySearchKeyDown}
+              onPrimaryButtonClick={executePrimarySearchPrompt}
+              primaryButtonDisabled={primarySearchText.length < 1}
             />
           )}
 
@@ -90,18 +115,24 @@ function Search() {
             />
           )}
 
-          {!isLoading && !showResults && (
+          {!isLoading && !showWatchMovie && (
             <div className="gap-2 flex items-start w-full mb-14">
               <AIPromptButton label="how do I upgrade my PC?" />
               <AIPromptButton label="how do I speed up my games?" />
               <AIPromptButton label="how do I replace my PC?" />
             </div>
           )}
-          {showResults && <WatchMovie />}
+          <AccordionRoot
+            className="w-full flex flex-col gap-6"
+            defaultValue="item-1"
+          >
+            {showWatchMovie && <WatchMovie />}
+            {showDisplayFlicker && <DisplayFlicker />}
+          </AccordionRoot>
         </div>
       </div>
 
-      {showResults && (
+      {(showWatchMovie || isLoading) && (
         <div className="footer-search">
           <div className="w-[740px]">
             <div className="gap-2 flex items-start w-full mb-6">
@@ -110,10 +141,12 @@ function Search() {
               <AIPromptButton label="how do I replace my PC?" />
             </div>
             <SearchBar
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onPrimaryButtonClick={() => handleNavigate("/audio")}
+              placeholder="Continue conversation or start a new request..."
+              value={footerSearchText}
+              onChange={(e) => setFooterSearchText(e.target.value)}
+              onKeyDown={handleFooterSearchKeyDown}
+              onPrimaryButtonClick={executeFooterSearchPrompt}
+              primaryButtonDisabled={footerSearchText.length < 1}
             />
           </div>
         </div>
@@ -123,3 +156,5 @@ function Search() {
 }
 
 export default Search;
+
+//to do.. merge accordian itwms into single accordion root,

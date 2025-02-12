@@ -11,7 +11,7 @@ function Accordion({ label, children, ...other }) {
         </RadixAccordion.Trigger>
       </RadixAccordion.Header>
       <RadixAccordion.Content className="accordion-content">
-        {children}
+        <div className="px-8"> {children}</div>
       </RadixAccordion.Content>
     </RadixAccordion.Item>
   );
