@@ -1,5 +1,140 @@
 :root {
-  @apply bg-[#E0E1EE] text-hpxCharcoal;
+  @apply bg-[#E0E1EE] min-h-screen text-hpxCharcoal;
+
+  --HPx-play-1: linear-gradient(
+      88deg,
+      rgba(114, 74, 233, 0.15) 6.09%,
+      rgba(71, 89, 245, 0.15) 35.51%,
+      rgba(39, 89, 255, 0.15) 69.12%,
+      rgba(12, 130, 240, 0.1) 94.8%
+    ),
+    rgba(255, 255, 255, 0.1);
+}
+
+body {
+  @apply items-center justify-center;
+}
+
+.title {
+  @apply text-[#191A22] text-[40px] text-center;
+}
+
+.jumbo-input {
+  @apply w-full cursor-text bg-[#fff] hover:bg-[#fff] transition-all duration-300 h-16 rounded-full pl-8 pr-2 placeholder:text-[#191A22]/50   text-[#191A22] !outline-none;
+}
+
+.prompt-while-loading-text {
+  @apply text-2xl text-center;
+  background: linear-gradient(
+    88deg,
+    #3719e2 2.71%,
+    #192ee3 65.1%,
+    #1579e3 101.62%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ai-prompt-button {
+  @apply bg-[#FDFDFF] bg-opacity-35  hover:!bg-opacity-70 active:!bg-opacity-100 
+  
+  
+  transition-all duration-300 rounded-full h-12 px-4;
+  color: #3719e2;
+  border-radius: var(--components-button-radius, 999px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.ai-prompt-button span {
+  background: linear-gradient(
+    88deg,
+    #3719e2 2.71%,
+    #192ee3 65.1%,
+    #1579e3 101.62%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.date-subtitle {
+  @apply text-[#525365] text-2xl leading-none text-center;
+}
+
+@font-face {
+  font-family: "FormaDJRUI";
+  src: url("/FormaDJRUI.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font */
+body {
+  font-family: "FormaDJRUI", sans-serif;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ai-switch-root {
+  @apply relative duration-300 transition-all h-[25px] w-[42px] rounded-full bg-hpxWhite hover:bg-hpxWhite-hover transition-all duration-300 outline-none cursor-pointer;
+}
+
+.ai-switch-thumb {
+  @apply flex items-center justify-center size-[21px] translate-x-0.5 rounded-full transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px];
+  background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
+}
+
+.ai-switch-root[data-state="checked"] {
+  background: linear-gradient(315deg, #4759f5 0%, #3bb7f6 100%);
+}
+
+.ai-switch-root[data-state="checked"]:hover {
+  background: linear-gradient(315deg, #3bb7f6 0%, #4759f5 100%);
+}
+
+.ai-switch-root[data-state="checked"] .ai-switch-thumb {
+  @apply !bg-hpxWhite;
+  background: none;
+}
+
+.ai-switch-root[data-state="unchecked"] .ai-switch-thumb img {
+  @apply hidden;
+}
+
+.content {
+  @apply flex flex-col items-center w-[740px];
+  animation: slideUp 1s ease-out;
+  margin: 0;
+  padding-top: 120px;
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-start !important; */
+  place-items: center;
+  min-width: 320px;
+  min-height: calc(70vh);
+  position: relative; /* Ensure it stays above the background */
+  z-index: 1;
+  color: black; /* Adjust text color for readability */
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 264px);
+}
+
+.footer-search {
+  @apply py-8 w-full flex items-center justify-center mt-12;
+  background: var(--HPx-play-1);
 }
 
 body {
@@ -34,32 +169,6 @@ body {
 /* Apply the font */
 body {
   font-family: "FormaDJRUI", sans-serif;
-}
-
-.primary-alert {
-  @apply flex  justify-between items-center h-[72px] content-between px-6  text-white rounded-xl text-xl w-[46.375rem];
-
-  background: linear-gradient(232deg, #5d67bf 0%, #4759f5 87.78%);
-}
-
-.primary-alert__left {
-  @apply flex items-center gap-4;
-}
-
-.primary-alert button {
-  @apply text-lg hover:text-hpxWhite-hover transition-all duration-300;
-}
-
-.secondary-alert {
-  @apply flex  justify-between items-center h-[46px] content-between  bg-hpxLightBlue text-hpxBlue rounded-xl text-sm px-4 gap-7;
-}
-
-.secondary-alert__left {
-  @apply flex items-center gap-3;
-}
-
-.secondary-alert button {
-  @apply text-xs hover:text-hpxBlue-hover transition-all duration-300 bg-white rounded-md px-2 h-6 flex items-center;
 }
 
 header {
@@ -237,18 +346,6 @@ header {
   object-fit: cover; /* Ensure the image maintains its aspect ratio */
 }
 
-.radio {
-  @apply flex items-center justify-between gap-2 w-full;
-}
-
-.radio__indicator-outer {
-  @apply rounded-full border-hpxBlue border;
-}
-
-.radio__indicator-inner {
-  @apply bg-hpxBlue size-4 rounded-full m-[6px];
-}
-
 .primary-button {
   @apply bg-hpxBlue hover:bg-hpxBlue-hover  active:bg-hpxBlue-active transition-all duration-300  text-white h-12 px-6 rounded-full text-base cursor-pointer;
 }
@@ -260,63 +357,20 @@ header {
   border-solid border  h-12 px-6 rounded-full text-base cursor-pointer;
 }
 
+header {
+  @apply w-full z-[100] flex  items-center justify-between py-2 px-20 fixed top-0 w-full;
+}
+
+.header__right {
+  @apply flex gap-3 items-end justify-center;
+}
+
+.toggle-group {
+  @apply inline-flex gap-0.5 rounded-full bg-[#b5b7cb]/20 backdrop-blur-sm;
+}
+
 .header-button {
   @apply bg-hpxCharcoal/10 hover:bg-hpxCharcoal/20 transition-colors duration-300 border-solid border text-hpxCharcoal h-10 px-4 rounded-full text-base cursor-pointer flex items-center gap-2;
-}
-
-.calendar {
-  @apply relative flex flex-col gap-9;
-}
-
-.calendar__bar,
-.calendar__fancyBar {
-  @apply flex gap-2 items-center;
-}
-.calendar__bar time {
-  @apply text-[#c7c8d3] text-xs whitespace-nowrap;
-}
-
-.calendar__bar div {
-  @apply bg-[#c7c8d3]  h-px w-full;
-}
-
-.calendar__fancyBar time {
-  @apply text-hpxCharcoal font-medium text-xs whitespace-nowrap;
-}
-
-.calendar__fancyBar div {
-  @apply h-px w-full relative;
-  background: linear-gradient(
-    270deg,
-    rgba(71, 89, 245, 0.8) 0%,
-    rgba(59, 183, 246, 0.8) 100%
-  );
-}
-
-.calendar__fancyBar div::after {
-  @apply size-3 rounded-full;
-  background: linear-gradient(
-    270deg,
-    rgba(71, 89, 245, 0.8) 0%,
-    rgba(59, 183, 246, 0.8) 100%
-  );
-}
-
-.calendar__event {
-  width: calc(100% - 56px);
-  @apply ml-[56px] absolute -bottom-1  h-16 bg-[#D0EBFF] bg-opacity-75 rounded-xl px-5 pt-3 border-l-[12px] border-[#3EA5F6] flex justify-between;
-}
-
-.calendar__event span {
-  @apply text-[#4759F5] text-sm;
-}
-
-.calendar__event time {
-  @apply text-[#7a7a80] text-xs whitespace-nowrap;
-}
-
-.close-button {
-  @apply cursor-pointer;
 }
 
 /* new components */

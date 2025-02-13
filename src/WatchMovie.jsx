@@ -4,9 +4,6 @@ import speed from "/icons/speed.svg";
 import play from "/icons/play.svg";
 import aiCircle from "/icons/aiCircle.svg";
 import bellSlash from "/icons/bellSlash.svg";
-
-import "./FullAudioSettings.css";
-import AccordionRoot from "./components/AccordionRoot";
 import Accordion from "./components/Accordion";
 import AIConversationPill from "./components/AIConversationPill";
 import AIText from "./components/AIText";

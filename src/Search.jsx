@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
-import { useNavigate } from "react-router-dom";
 import WatchMovie from "./WatchMovie";
 import DisplayFlicker from "./DisplayFlicker";
 //import SearchPromptList from "./SearchPromptList";
@@ -8,8 +7,6 @@ import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
 import aiLoadingIndicator from "/aiLoadingIndicator.svg";
 import AccordionRoot from "./components/AccordionRoot";
-
-import "./Search.css";
 
 function Search() {
   const [isLoading, setIsLoading] = useState(false); // Loading state
@@ -156,5 +153,3 @@ function Search() {
 }
 
 export default Search;
-
-//to do.. merge accordian itwms into single accordion root,
