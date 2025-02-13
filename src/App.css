@@ -75,7 +75,7 @@ body {
   font-family: "FormaDJRUI", sans-serif;
 }
 
-@keyframes slideUp {
+@keyframes slideUpAndIn {
   from {
     transform: translateY(100px);
     opacity: 0;
@@ -84,6 +84,22 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+@keyframes slideUpFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-100px);
+  }
+}
+
+.search-bar-exit {
+  animation: slideUpFadeOut 1s ease-out forwards;
 }
 
 .ai-switch-root {
@@ -114,7 +130,7 @@ body {
 
 .content {
   @apply flex flex-col items-center w-[740px];
-  animation: slideUp 1s ease-out;
+  animation: slideUpAndIn 1s ease-out;
   margin: 0;
   padding-top: 120px;
   /* display: flex;
@@ -410,6 +426,7 @@ header {
 
 .accordion {
   @apply text-[#212121] bg-[#FFFFFF] rounded-3xl;
+  animation: slideUpAndIn 1s ease-out;
 }
 
 .accordion-trigger {
@@ -434,6 +451,36 @@ header {
 
 .accordion-content {
   @apply py-8 border-t border-solid border-[#EDEEFE];
+}
+
+.accordion-content[data-state="open"] {
+  animation: accordionSlideDown 100ms ease-out;
+}
+
+.accordion-content[data-state="closed"] {
+  animation: accordionSlideUp 100ms ease-out;
+}
+
+@keyframes accordionSlideDown {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes accordionSlideUp {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
 }
 
 .copy-paste {
