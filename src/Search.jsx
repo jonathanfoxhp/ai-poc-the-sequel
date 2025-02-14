@@ -135,7 +135,7 @@ function Search() {
           )}
 
           {!isLoading && !showWatchMovie && (
-            <div className="gap-3 flex items-start w-full mb-14">
+            <div className="gap-3 flex items-start justify-center w-full mb-14">
               <AIPromptButton label="how do I upgrade my PC?" />
               <AIPromptButton label="how do I speed up my games?" />
               <AIPromptButton label="how do I replace my PC?" />
@@ -159,7 +159,7 @@ function Search() {
         }`}
       >
         <div className="w-[740px]">
-          <div className="gap-3 flex items-start w-full mb-6">
+          <div className="gap-3 flex items-start justify-center w-full mb-6">
             <AIPromptButton label="how do I upgrade my PC?" />
             <AIPromptButton label="how do I speed up my games?" />
             <AIPromptButton label="how do I replace my PC?" />
