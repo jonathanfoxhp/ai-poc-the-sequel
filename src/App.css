@@ -146,11 +146,13 @@ body {
 
 .content-wrapper {
   min-height: calc(100vh - 264px);
+  @apply mb-[250px] flex items-center justify-center;
 }
 
 .footer-search {
-  @apply py-8 w-full flex items-center justify-center mt-12;
+  @apply py-6 w-full flex items-center justify-center  fixed bottom-0 z-[100];
   background: var(--HPx-play-1);
+  backdrop-filter: blur(15px);
 }
 
 body {
@@ -336,7 +338,7 @@ header {
 }
 
 .background-flourish-container.flourish-spin::before {
-  @apply animate-spin [animation-duration:10s];
+  @apply animate-spin [animation-duration:20s];
 }
 
 .background-image-container {
@@ -430,19 +432,19 @@ header {
 }
 
 .accordion-trigger {
-  @apply h-[56px] w-full flex items-center font-medium justify-between  px-8;
+  @apply w-full flex items-center font-medium justify-between  px-8;
 }
 
 .accordion-trigger[data-state="open"] {
-  @apply text-2xl;
+  @apply text-2xl h-[84px];
 }
 
 .accordion-trigger[data-state="closed"] {
-  @apply text-xl;
+  @apply text-xl h-[56px];
 }
 
 .accordion > h3 {
-  @apply w-full h-[56px];
+  @apply w-full;
 }
 
 .accordion-trigger[data-state="open"] img {
@@ -454,11 +456,11 @@ header {
 }
 
 .accordion-content[data-state="open"] {
-  animation: accordionSlideDown 100ms ease-out;
+  animation: accordionSlideDown 300ms ease-out;
 }
 
 .accordion-content[data-state="closed"] {
-  animation: accordionSlideUp 100ms ease-out;
+  animation: accordionSlideUp 300ms ease-out;
 }
 
 @keyframes accordionSlideDown {

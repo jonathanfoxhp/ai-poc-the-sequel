@@ -29,12 +29,24 @@ function WatchMovie() {
             <>
               <AIText label="Sure! To optimize your movie experience you can:" />
               <ol className="text-base">
-                <li>1. Enable audio movie preset</li>
-                <li>2. Turn on surround sound</li>
-                <li>3. Enable immersive audio</li>
-                <li>4. Set display brightness to 80%</li>
-                <li>5. Switch display preset to movie mode</li>
-                <li>6. Turn on display HDR</li>
+                <li>
+                  1. Enable <strong>audio movie preset</strong>
+                </li>
+                <li>
+                  2. Turn on <strong>surround sound</strong>
+                </li>
+                <li>
+                  3. Enable <strong>immersive audio</strong>
+                </li>
+                <li>
+                  4. Set display <strong>brightness to 80%</strong>
+                </li>
+                <li>
+                  5. Switch display preset to <strong>movie mode</strong>
+                </li>
+                <li>
+                  6. Turn on display <strong>HDR</strong>
+                </li>
               </ol>
               <div className="font-medium text-base">
                 Do you want me to activate all six settings?
