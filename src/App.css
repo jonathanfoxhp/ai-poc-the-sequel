@@ -201,7 +201,7 @@ header {
 }
 
 .icon-button--basic {
-  @apply w-12 h-12 bg-hpxMediumGrey hover:bg-hpxMediumGrey-hover bg-opacity-20 text-[#191A22] rounded-full;
+  @apply w-12 h-12 bg-hpxMediumGrey hover:bg-hpxMediumGrey-hover bg-opacity-20 hover:bg-opacity-40 text-[#191A22] rounded-full;
 }
 
 .icon-button--primary {
@@ -453,12 +453,29 @@ header {
   @apply py-8 border-t border-solid border-[#EDEEFE] overflow-hidden;
 }
 
-.accordion-content[data-state="open"] {
-  @apply animate-accordionSlideDown;
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.accordion-content[data-state="open"] {
+  animation: slideDown 200ms linear;
+}
 .accordion-content[data-state="closed"] {
-  @apply animate-accordionSlideUp;
+  animation: slideUp 200ms linear;
 }
 
 .copy-paste {

@@ -1,9 +1,6 @@
-function BasicIconButton({ icon, ...other }) {
+function BasicIconButton({ icon, className, ...other }) {
   return (
-    <button
-      className="icon-button--basic !w-10 !h-10 !bg-[#828398/20]"
-      {...other}
-    >
+    <button className={"icon-button--basic " + className} {...other}>
       {icon}
     </button>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import checkMark from "/icons/checkmark.svg";
 import speed from "/icons/speed.svg";
 import play from "/icons/play.svg";
@@ -11,14 +11,23 @@ import PrimaryButton from "./components/PrimaryButton";
 import CopyPaste from "./components/CopyPaste";
 
 function WatchMovie({ onClick }) {
+  const messagesEndRef = useRef(null);
+
   const [conversationStage, setConversationStage] = useState(0);
 
   const onActivateAllSettings = () => {
     setConversationStage(1);
+    scrollToBottom();
   };
 
   const onDisableToastNotifications = () => {
     setConversationStage(2);
+    scrollToBottom();
+  };
+
+  const scrollToBottom = () => {
+    console.log("scroll");
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -34,22 +43,25 @@ function WatchMovie({ onClick }) {
               <AIText label="Sure! To optimize your movie experience you can:" />
               <ol className="text-base">
                 <li>
-                  1. Enable <strong>audio movie preset</strong>
+                  1. Enable{" "}
+                  <span className="font-bold">audio movie preset</span>
                 </li>
                 <li>
-                  2. Turn on <strong>surround sound</strong>
+                  2. Turn on <span className="font-bold">surround sound</span>
                 </li>
                 <li>
-                  3. Enable <strong>immersive audio</strong>
+                  3. Enable <span className="font-bold">immersive audio</span>
                 </li>
                 <li>
-                  4. Set display <strong>brightness to 80%</strong>
+                  4. Set display{" "}
+                  <span className="font-bold">brightness to 80%</span>
                 </li>
                 <li>
-                  5. Switch display preset to <strong>movie mode</strong>
+                  5. Switch display preset to{" "}
+                  <span className="font-bold">movie mode</span>
                 </li>
                 <li>
-                  6. Turn on display <strong>HDR</strong>
+                  6. Turn on display <span className="font-bold">HDR</span>
                 </li>
               </ol>
               <div className="font-medium text-base">
@@ -128,6 +140,7 @@ function WatchMovie({ onClick }) {
           )}
         </div>
       </Accordion>
+      <div ref={messagesEndRef} className="mt-[100px]" />
     </>
   );
 }

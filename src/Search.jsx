@@ -127,13 +127,13 @@ function Search() {
                     : "translate-y-0"
                 }`}
               >
-                <h1 className="title  mt-0 !leading-none greeting">
+                <h1 className="title  mt-0 !leading-tight greeting">
                   How can I help you today?
                 </h1>
               </div>
               {!showWatchMovie && isLoading && (
                 <div
-                  className={`prompt-while-loading-text mt-2 !leading-none transition-opacity duration-500 opacity-100`}
+                  className={`prompt-while-loading-text mt-2 !leading transition-opacity duration-500 opacity-100`}
                 >
                   {primaryPromptText}
                 </div>

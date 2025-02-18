@@ -36,30 +36,22 @@ export default {
             opacity: "1",
           },
         },
-        accordionSlideDown: {
-          "0%": { transform: "scaleY(0)", opacity: "0" },
-          "100%": { transform: "scaleY(1)", opacity: "1" },
-        },
-        accordionSlideUp: {
-          "0%": { transform: "scaleY(1)", opacity: "1" },
-          "100%": { transform: "scaleY(0)", opacity: "0" },
-        },
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",
-        fadeSlideOutDelay1: "fadeSlideOut 0.625s ease-in-out 0.25s forwards",
-        fadeSlideOutDelay2: "fadeSlideOut 0.625s ease-in-out 0.5s forwards",
-        fadeSlideOutDelay3: "fadeSlideOut 0.625s ease-in-out 0.75s forwards",
-        fadeSlideOutDelay4: "fadeSlideOut 0.625s ease-in-out 1s forwards",
+        fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.25s forwards",
+        fadeSlideOutDelay2: "fadeSlideOut 0.3125s ease-in-out 0.5s forwards",
+        fadeSlideOutDelay3: "fadeSlideOut 0.3125s ease-in-out 0.75s forwards",
+        fadeSlideOutDelay4: "fadeSlideOut 0.3125s ease-in-out 1s forwards",
 
         fadeSlideIn: "fadeSlideIn 0.5s ease-in-out forwards",
-        fadeSlideInDelay1: "fadeSlideIn 0.625s ease-in-out 0.25s forwards",
-        fadeSlideInDelay2: "fadeSlideIn 0.625s ease-in-out 0.50s forwards",
-        fadeSlideInDelay3: "fadeSlideIn 0.625s ease-in-out 0.75s forwards",
+        fadeSlideInDelay1: "fadeSlideIn 0.3125s ease-in-out 0.25s forwards",
+        fadeSlideInDelay2: "fadeSlideIn 0.3125s ease-in-out 0.50s forwards",
+        fadeSlideInDelay3: "fadeSlideIn 0.3125s ease-in-out 0.75s forwards",
 
-        accordionSlideDown: "accordionSlideDown 0.1s ease-out forwards",
-        accordionSlideUp: "accordionSlideUp 0.25s ease-out forwards",
+        // accordionSlideDown: "accordionSlideDown 0.1s ease-out forwards",
+        // accordionSlideUp: "accordionSlideUp 0.25s ease-out forwards",
       },
       colors: {
         hpxBlue: {
