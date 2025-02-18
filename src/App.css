@@ -74,7 +74,7 @@ body {
 body {
   font-family: "FormaDJRUI", sans-serif;
 }
-
+/* 
 @keyframes slideUpAndIn {
   from {
     transform: translateY(100px);
@@ -96,10 +96,10 @@ body {
     max-height: 0;
     transform: translateY(-100px);
   }
-}
+} */
 
 .search-bar-exit {
-  animation: slideUpFadeOut 1s ease-out forwards;
+  /* animation: slideUpFadeOut 1s ease-out forwards; */
 }
 
 .ai-switch-root {
@@ -130,7 +130,6 @@ body {
 
 .content {
   @apply flex flex-col items-center w-[740px];
-  animation: slideUpAndIn 1s ease-out;
   margin: 0;
   padding-top: 120px;
   /* display: flex;
@@ -428,7 +427,6 @@ header {
 
 .accordion {
   @apply text-[#212121] bg-[#FFFFFF] rounded-3xl;
-  animation: slideUpAndIn 1s ease-out;
 }
 
 .accordion-trigger {
@@ -452,37 +450,15 @@ header {
 }
 
 .accordion-content {
-  @apply py-8 border-t border-solid border-[#EDEEFE];
+  @apply py-8 border-t border-solid border-[#EDEEFE] overflow-hidden;
 }
 
 .accordion-content[data-state="open"] {
-  animation: accordionSlideDown 300ms ease-out;
+  @apply animate-accordionSlideDown;
 }
 
 .accordion-content[data-state="closed"] {
-  animation: accordionSlideUp 300ms ease-out;
-}
-
-@keyframes accordionSlideDown {
-  from {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-@keyframes accordionSlideUp {
-  from {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-  to {
-    transform: scaleY(0);
-    opacity: 0;
-  }
+  @apply animate-accordionSlideUp;
 }
 
 .copy-paste {

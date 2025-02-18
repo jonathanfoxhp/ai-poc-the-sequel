@@ -3,7 +3,7 @@ import Accordion from "./components/Accordion";
 import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
 
-function DisplayFlicker() {
+function DisplayFlicker({ onClick }) {
   const [conversationStage, setConversationStage] = useState(0);
 
   const onActivateAllSettings = () => {
@@ -15,7 +15,11 @@ function DisplayFlicker() {
   };
 
   return (
-    <Accordion label="Why is my display flickering?" value="item-2" defaultOpen>
+    <Accordion
+      label="Why is my display flickering?"
+      value="item-2"
+      onClick={onClick}
+    >
       <div className="flex flex-col gap-6">
         {conversationStage >= 0 && (
           <>

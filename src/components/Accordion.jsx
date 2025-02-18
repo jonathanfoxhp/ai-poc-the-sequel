@@ -3,7 +3,7 @@ import chevronDown from "/icons/chevronDown.svg";
 
 function Accordion({ label, children, ...other }) {
   return (
-    <RadixAccordion.Item className="accordion" {...other}>
+    <RadixAccordion.Item className="accordion animate-fadeSlideIn" {...other}>
       <RadixAccordion.Header>
         <RadixAccordion.Trigger className="accordion-trigger">
           {label}

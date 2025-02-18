@@ -1,4 +1,5 @@
 import arrowUpIcon from "/icons/arrowUp.svg";
+import squareIcon from "/icons/square.svg";
 import aiToggleIcon from "/icons/aiToggle.svg";
 import micOnIcon from "/icons/micOn.svg";
 import PrimaryIconButton from "./PrimaryIconButton";
@@ -28,14 +29,9 @@ function SearchBar({
         <PrimaryIconButton
           disabled={primaryButtonDisabled}
           onClick={onPrimaryButtonClick}
-          icon={<img src={arrowUpIcon} />}
+          icon={<img src={isLoading ? squareIcon : arrowUpIcon} />}
         />
       </span>
-      {isLoading && (
-        <span className="absolute right-10 top-7 scale-[3] animate-pulse">
-          <img src={aiToggleIcon} />
-        </span>
-      )}
     </div>
   );
 }

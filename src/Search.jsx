@@ -18,6 +18,7 @@ function Search() {
 
   const [footerSearchText, setFooterSearchText] = useState("");
   const [footerPromptText, setFooterPromptText] = useState("");
+  const [accordionValue, setAccordionValue] = useState("item-1");
 
   const scrollToTop = () => {
     console.log("scroll");
@@ -34,6 +35,7 @@ function Search() {
     const newPromptText = primarySearchText;
     setPrimaryPromptText(newPromptText);
     setIsLoading(true);
+
     setTimeout(() => {
       setShowWatchMovie(true);
       setIsLoading(false);
@@ -53,7 +55,7 @@ function Search() {
       setFooterPromptText(newPromptText);
       setShowDisplayFlicker(true);
       setIsLoading(false);
-    }, 300);
+    }, 5000);
   };
 
   //not used yet
@@ -67,6 +69,12 @@ function Search() {
   // }, [partialSettingsId]);
 
   const [primarySearchVisible, setPrimarySearchVisible] = useState(true);
+  const [footerSearchContainerVisible, setFooterSearchContainerVisible] =
+    useState(false);
+  const [footerSearchBarVisible, setFooterSearchBarVisible] = useState(false);
+  const [footerButton1Visible, setFooterButton1Visible] = useState(false);
+  const [footerButton2Visible, setFooterButton2Visible] = useState(false);
+  const [footerButton3Visible, setFooterButton3Visible] = useState(false);
 
   useEffect(() => {
     if (isLoading || showWatchMovie) {
@@ -76,6 +84,21 @@ function Search() {
     }
   }, [isLoading, showWatchMovie]);
 
+  useEffect(() => {
+    if (isLoading || showWatchMovie) {
+      setTimeout(() => setFooterSearchContainerVisible(true), 5000);
+      // setTimeout(() => setFooterButton1Visible(true), 5800);
+      // setTimeout(() => setFooterButton2Visible(true), 6200);
+      // setTimeout(() => setFooterButton3Visible(true), 6600);
+      // setTimeout(() => setFooterSearchBarVisible(true), 7000);
+    } else {
+      setFooterSearchContainerVisible(false);
+      // setFooterButton1Visible(false);
+      // setFooterButton2Visible(false);
+      // setFooterButton3Visible(false);
+      // setFooterSearchBarVisible(false);
+    }
+  }, [isLoading, showWatchMovie]);
   return (
     <>
       <div
@@ -83,95 +106,162 @@ function Search() {
           isLoading ? "flourish-spin" : ""
         }`}
       />
-
       <Header page="search" />
-
       <div className="content-wrapper">
         <div className="content mt-[4.5rem]">
-          <div
-            className={
-              !showWatchMovie
-                ? "w-full search-bar-enter"
-                : "w-full search-bar-exit"
-            }
-          >
-            <div className="date-subtitle mb-2">Hello, Adam</div>
-            <div className="mb-12">
-              <h1 className="title mb6 mt-0 !leading-none">
-                How can I help you today?
-              </h1>
+          <div className={!showWatchMovie ? "w-fullr" : "w-full hidden"}>
+            <div className="transition-all duration-500 animate-fadeSlideIn">
+              <div
+                className={`date-subtitle mb-2 transition-all duration-500 ${
+                  showWatchMovie || isLoading
+                    ? "-translate-y-4"
+                    : "translate-y-0"
+                }`}
+              >
+                Hello, Adam
+              </div>
+              <div
+                className={`transition-all duration-500 ${
+                  showWatchMovie || isLoading
+                    ? "-translate-y-4"
+                    : "translate-y-0"
+                }`}
+              >
+                <h1 className="title  mt-0 !leading-none greeting">
+                  How can I help you today?
+                </h1>
+              </div>
               {!showWatchMovie && isLoading && (
-                <div className="prompt-while-loading-text mt-6 !leading-none">
+                <div
+                  className={`prompt-while-loading-text mt-2 !leading-none transition-opacity duration-500 opacity-100`}
+                >
                   {primaryPromptText}
                 </div>
               )}
             </div>
           </div>
 
-          {primarySearchVisible && (
-            <div
-              className={
-                !isLoading && !showWatchMovie
-                  ? "w-full search-bar-enter"
-                  : "w-full search-bar-exit"
-              }
-            >
-              <SearchBar
-                placeholder="Ask me anything about optimizing device settings..."
-                value={primarySearchText}
-                onChange={(e) => setPrimarySearchText(e.target.value)}
-                onKeyDown={handlePrimarySearchKeyDown}
-                onPrimaryButtonClick={executePrimarySearchPrompt}
-                primaryButtonDisabled={primarySearchText.length < 1}
-              />
-            </div>
-          )}
+          <div
+            //problematic
+            className={`  w-full mt-6 ${
+              !primarySearchVisible
+                ? "animate-fadeSlideOutDelay3"
+                : "animate-fadeSlideIn"
+            }`}
+          >
+            <SearchBar
+              id="pb4"
+              placeholder="Ask me anything about optimizing device settings..."
+              value={primarySearchText}
+              onChange={(e) => setPrimarySearchText(e.target.value)}
+              onKeyDown={handlePrimarySearchKeyDown}
+              onPrimaryButtonClick={executePrimarySearchPrompt}
+              primaryButtonDisabled={primarySearchText.length < 1}
+            />
+          </div>
 
+          {/* //problematic */}
+          <div
+            className={`gap-3 flex items-start justify-center w-full mb-14  ${
+              !primarySearchVisible
+                ? "animate-fadeSlideOutDelay4"
+                : "animate-fadeSlideIn"
+            }`}
+          >
+            <AIPromptButton
+              label="how do I upgrade my PC?"
+              className={`${
+                !primarySearchVisible
+                  ? "animate-fadeSlideOut opacity-100"
+                  : "animate-fadeSlideInDelay1 opacity-0"
+              }`}
+            />
+            <AIPromptButton
+              label="how do I speed up my games?"
+              className={`${
+                !primarySearchVisible
+                  ? "animate-fadeSlideOutDelay1 opacity-100"
+                  : "animate-fadeSlideInDelay2 opacity-0"
+              }`}
+            />
+            <AIPromptButton
+              label="how do I replace my PC?"
+              className={` ${
+                !primarySearchVisible
+                  ? "animate-fadeSlideOutDelay2 opacity-100"
+                  : "animate-fadeSlideInDelay3 opacity-0"
+              }`}
+            />
+          </div>
           {isLoading && (
             <img
               src={aiLoadingIndicator}
-              className="animate-ping [animation-duration:2s]"
+              className="animate-ping [animation-duration:2s] mt-6"
             />
-          )}
-
-          {!isLoading && !showWatchMovie && (
-            <div className="gap-3 flex items-start justify-center w-full mb-14">
-              <AIPromptButton label="how do I upgrade my PC?" />
-              <AIPromptButton label="how do I speed up my games?" />
-              <AIPromptButton label="how do I replace my PC?" />
-            </div>
           )}
           <AccordionRoot
             className="w-full flex flex-col gap-6"
-            defaultValue="item-1"
+            value={accordionValue}
           >
-            {showWatchMovie && <WatchMovie />}
-            {showDisplayFlicker && <DisplayFlicker />}
+            {showWatchMovie && (
+              <WatchMovie
+                onClick={() =>
+                  setAccordionValue(accordionValue === "item-1" ? "" : "item-1")
+                }
+              />
+            )}
+            {showDisplayFlicker && (
+              <DisplayFlicker
+                onClick={() =>
+                  setAccordionValue(accordionValue === "item-2" ? "" : "item-2")
+                }
+              />
+            )}
           </AccordionRoot>
         </div>
       </div>
-
       <div
-        className={`footer-search transition-opacity duration-300 ${
-          showWatchMovie || isLoading
-            ? "opacity-100"
-            : "opacity-0 pointer-events-none"
+        className={`opacity-0 footer-search ${
+          footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
         }`}
       >
         <div className="w-[740px]">
           <div className="gap-3 flex items-start justify-center w-full mb-6">
-            <AIPromptButton label="how do I upgrade my PC?" />
-            <AIPromptButton label="how do I speed up my games?" />
-            <AIPromptButton label="how do I replace my PC?" />
+            <AIPromptButton
+              label="how do I upgrade my PC?"
+              className={`opacity-0 ${
+                footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
+              }`}
+            />
+            <AIPromptButton
+              label="how do I speed up my games?"
+              className={`opacity-0 ${
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay1" : ""
+              }`}
+            />
+            <AIPromptButton
+              label="how do I replace my PC?"
+              className={`opacity-0 ${
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+              }`}
+              x
+            />
           </div>
-          <SearchBar
-            placeholder="Continue conversation or start a new request..."
-            value={footerSearchText}
-            onChange={(e) => setFooterSearchText(e.target.value)}
-            onKeyDown={handleFooterSearchKeyDown}
-            onPrimaryButtonClick={executeFooterSearchPrompt}
-            primaryButtonDisabled={footerSearchText.length < 1}
-          />
+          <div
+            className={`w-full opacity-0 ${
+              footerSearchContainerVisible ? "animate-fadeSlideInDelay3" : ""
+            }`}
+          >
+            <SearchBar
+              placeholder="Continue conversation or start a new request..."
+              value={footerSearchText}
+              onChange={(e) => setFooterSearchText(e.target.value)}
+              onKeyDown={handleFooterSearchKeyDown}
+              onPrimaryButtonClick={executeFooterSearchPrompt}
+              primaryButtonDisabled={footerSearchText.length < 1}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
       </div>
     </>

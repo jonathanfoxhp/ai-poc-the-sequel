@@ -10,7 +10,7 @@ import AIText from "./components/AIText";
 import PrimaryButton from "./components/PrimaryButton";
 import CopyPaste from "./components/CopyPaste";
 
-function WatchMovie() {
+function WatchMovie({ onClick }) {
   const [conversationStage, setConversationStage] = useState(0);
 
   const onActivateAllSettings = () => {
@@ -23,7 +23,11 @@ function WatchMovie() {
 
   return (
     <>
-      <Accordion label="I want to watch a movie" value="item-1" defaultOpen>
+      <Accordion
+        label="I want to watch a movie"
+        value="item-1"
+        onClick={onClick}
+      >
         <div className="flex flex-col gap-6">
           {conversationStage >= 0 && (
             <>

@@ -1,6 +1,6 @@
-function AIPromptButton({ label, ...other }) {
+function AIPromptButton({ label, className, ...other }) {
   return (
-    <button className="ai-prompt-button" {...other}>
+    <button className={"ai-prompt-button " + className} {...other}>
       <span>{label}</span>
     </button>
   );
