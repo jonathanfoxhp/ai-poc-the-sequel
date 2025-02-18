@@ -77,7 +77,6 @@ function Header({ hasBack, page = "search" }) {
         </div>
       </div>
       <div className="header__right">
-        <BasicIconButton icon={<img src={plusIcon} />} />
         <BasicIconButton icon={<img src={bellIcon} />} />
         <Avatar />
       </div>
