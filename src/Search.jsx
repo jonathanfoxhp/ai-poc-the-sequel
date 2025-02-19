@@ -184,7 +184,7 @@ function Search() {
               label="how do I upgrade my PC?"
               className={`${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOut opacity-100"
+                  ? "animate-fadeSlideOutDelay2 opacity-100"
                   : "animate-fadeSlideInDelay1 opacity-0"
               }`}
             />
@@ -200,15 +200,18 @@ function Search() {
               label="how do I replace my PC?"
               className={` ${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOutDelay2 opacity-100"
+                  ? "animate-fadeSlideOut opacity-100"
                   : "animate-fadeSlideInDelay3 opacity-0"
               }`}
             />
           </div>
-          <video width="100px" autoPlay loop muted>
-            <source src={loader} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {/* {isLoading && (
+           
+            <video width="100px" autoPlay loop muted>
+              <source src={loader} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}  */}
 
           <AccordionRoot
             className="w-full flex flex-col gap-6"
