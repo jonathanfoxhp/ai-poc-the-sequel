@@ -107,11 +107,7 @@ function Search() {
   }, [isLoading, showWatchMovie]);
   return (
     <>
-      <div
-        className={`background-flourish-container ${
-          isLoading ? "flourish-spin" : ""
-        }`}
-      />
+      <div className={`background-flourish-container ${isLoading ? "" : ""}`} />
       <Header page="search" />
       <div className="content-wrapper">
         <div className="content mt-[4.5rem]">
@@ -123,6 +119,8 @@ function Search() {
               >
                 Hello, Adam
               </div>
+
+              <div className="videobg" />
               <div
               // className={`transition-all duration-500 ${
               //   showWatchMovie || isLoading
@@ -206,18 +204,22 @@ function Search() {
             />
           </div>
           {/* {isLoading && ( */}
-          {true && (
-           
           <video
-          width="200px" autoPlay loop muted
-          className="rounded-full mask-feather"
-          style={{
-            maskImage: 'radial-gradient(circle at center, black 35%, transparent 60%)'
-          }}>
+            className={`video-loader absolute top-[240px]  !delay-[1000ms] ${
+              isLoading ? "animate-fadein opacity-100" : "opacity-0"
+            }`}
+            width="200px"
+            autoPlay
+            loop
+            muted
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 35%, transparent 60%)",
+            }}
+          >
             <source src={loader} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          )}
 
           <AccordionRoot
             className="w-full flex flex-col gap-6"

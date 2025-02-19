@@ -75,7 +75,7 @@ export default {
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
-        fadeOut: "fadeOut 0.1s ease-in-out 1s",
+        fadeOut: "fadeOut 0.5s ease-in-out 1s",
 
         searchSlideOut: "searchSlideOut 1s ease-in-out 0.5s forwards",
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",

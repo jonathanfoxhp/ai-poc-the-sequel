@@ -364,6 +364,10 @@ header {
   z-index: -1; /* Send it behind other content */
 }
 
+.video-loader {
+  @apply rounded-full;
+}
+
 .device-card-flourish {
   position: absolute; /* Position the image relative to the card */
   top: 0; /* Align to the top */
