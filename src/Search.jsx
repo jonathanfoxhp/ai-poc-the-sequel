@@ -205,7 +205,12 @@ function Search() {
               }`}
             />
           </div>
-          <video width="100px" autoPlay loop muted>
+          <video
+          width="200px" autoPlay loop muted
+          className="rounded-full mask-feather"
+          style={{
+            maskImage: 'radial-gradient(circle at center, black 35%, transparent 60%)'
+          }}>
             <source src={loader} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
