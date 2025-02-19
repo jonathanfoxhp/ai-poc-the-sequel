@@ -256,11 +256,12 @@ header {
 
 .animate-searchSlideOut input,
 .animate-searchSlideOut .searchbar-controls {
-  @apply animate-fadeOut;
+  @apply animate-fadeOut text-transparent;
 }
 
-.animate-searchSlideOut .searchbar-controls {
-  @apply opacity-0;
+.animate-searchSlideOut .searchbar-controls,
+.animate-searchSlideOut input::placeholder {
+  @apply hidden;
 }
 
 .card {

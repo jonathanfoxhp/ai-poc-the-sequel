@@ -27,10 +27,11 @@ export default {
           "50%": {
             opacity: "0.5",
             transform: "translateY(80px)",
-            borderRadius: "50%",
+            borderRadius: "100%",
             backgroundColor: "#FFFFFF", // Ensures it turns white
             width: "40px",
             height: "40px",
+            overflow: "hidden",
           },
           "100%": {
             opacity: "0",
@@ -38,6 +39,7 @@ export default {
             transform: "translateY(160px)",
             width: "0px",
             height: "0px",
+            overflow: "hidden",
 
             visibility: "hidden",
           },
