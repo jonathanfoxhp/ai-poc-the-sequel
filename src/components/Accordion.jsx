@@ -1,9 +1,12 @@
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import chevronDown from "/icons/chevronDown.svg";
 
-function Accordion({ label, onClick, children, ...other }) {
+function Accordion({ label, onClick, children, className, ...other }) {
   return (
-    <RadixAccordion.Item className="accordion animate-fadeSlideIn" {...other}>
+    <RadixAccordion.Item
+      className={"accordion animate-fadeSlideIn " + className}
+      {...other}
+    >
       <RadixAccordion.Header>
         <RadixAccordion.Trigger className="accordion-trigger" onClick={onClick}>
           {label}

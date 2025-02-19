@@ -256,7 +256,7 @@ header {
 
 .animate-searchSlideOut input,
 .animate-searchSlideOut .searchbar-controls {
-  @apply animate-fadeOut text-transparent;
+  @apply animate-hardFadeOut !delay-[1800ms] !text-transparent !bg-transparent;
 }
 
 .animate-searchSlideOut .searchbar-controls,
@@ -448,7 +448,7 @@ header {
 }
 
 .accordion-trigger[data-state="open"] {
-  @apply text-2xl h-[84px];
+  @apply text-2xl h-[56px];
 }
 
 .accordion-trigger[data-state="closed"] {
@@ -464,10 +464,10 @@ header {
 }
 
 .accordion-content {
-  @apply py-8 border-t border-solid border-[#EDEEFE] overflow-hidden;
+  @apply py-8 border-t border-solid border-[#EDEEFE] overflow-scroll;
 }
 
-@keyframes slideDown {
+@keyframes accordionSlideDown {
   from {
     height: 0;
   }
@@ -476,7 +476,7 @@ header {
   }
 }
 
-@keyframes slideUp {
+@keyframes accordionSlideUp {
   from {
     height: var(--radix-accordion-content-height);
   }
@@ -486,10 +486,10 @@ header {
 }
 
 .accordion-content[data-state="open"] {
-  animation: slideDown 200ms linear;
+  animation: accordionSlideDown 100ms ease-out forwards;
 }
 .accordion-content[data-state="closed"] {
-  animation: slideUp 200ms linear;
+  animation: accordionSlideUp 100ms ease-out forwards;
 }
 
 .copy-paste {

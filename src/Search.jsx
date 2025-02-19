@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import Header from "./components/Header";
 import WatchMovie from "./WatchMovie";
 import DisplayFlicker from "./DisplayFlicker";
@@ -6,13 +7,15 @@ import DisplayFlicker from "./DisplayFlicker";
 import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
 import aiLoadingIndicator from "/aiLoadingIndicator.svg";
-import loader from "/loader.mp4";
+import loader from "/icons/loader.mp4";
 
 import React from "react";
 
 import AccordionRoot from "./components/AccordionRoot";
 
 function Search() {
+  const messagesEndRef = useRef(null);
+
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [showWatchMovie, setShowWatchMovie] = useState(false); // Loading state
   const [showDisplayFlicker, setShowDisplayFlicker] = useState(false); // Loading state
@@ -27,6 +30,10 @@ function Search() {
   const scrollToTop = () => {
     console.log("scroll");
     window.scrollTo(0, 80);
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handlePrimarySearchKeyDown = (e) => {
@@ -56,11 +63,13 @@ function Search() {
 
   const executeFooterSearchPrompt = () => {
     setIsLoading(true);
+    scrollToBottom();
     setTimeout(() => {
       const newPromptText = footerPromptText;
       setFooterPromptText(newPromptText);
       setShowDisplayFlicker(true);
       setIsLoading(false);
+      setAccordionValue("item-2");
     }, 5000);
   };
 
@@ -126,7 +135,6 @@ function Search() {
                 })()}
               </div>
 
-              <div className="videobg" />
               <div
               // className={`transition-all duration-500 ${
               //   showWatchMovie || isLoading
@@ -188,7 +196,7 @@ function Search() {
               label="how do I upgrade my PC?"
               className={`${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOutDelay2 opacity-100"
+                  ? "animate-fadeSlideOutDelay2"
                   : "animate-fadeSlideInDelay1 opacity-0"
               }`}
             />
@@ -196,7 +204,7 @@ function Search() {
               label="how do I speed up my games?"
               className={`${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOutDelay1 opacity-100"
+                  ? "animate-fadeSlideOutDelay1"
                   : "animate-fadeSlideInDelay2 opacity-0"
               }`}
             />
@@ -204,15 +212,16 @@ function Search() {
               label="how do I replace my PC?"
               className={` ${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOut opacity-100"
+                  ? "animate-fadeSlideOut"
                   : "animate-fadeSlideInDelay3 opacity-0"
               }`}
             />
           </div>
-          {/* {isLoading && ( */}
           <video
-            className={`video-loader absolute top-[240px]  !delay-[1000ms] ${
-              isLoading ? "animate-fadein opacity-100" : "opacity-0"
+            className={`video-loader absolute top-[400px]  !delay-[2050ms] ${
+              isLoading && !showWatchMovie
+                ? "animate-fadein opacity-100"
+                : "opacity-0"
             }`}
             width="200px"
             autoPlay
@@ -228,7 +237,7 @@ function Search() {
           </video>
 
           <AccordionRoot
-            className="w-full flex flex-col gap-6"
+            className="w-full flex flex-col gap-2"
             value={accordionValue}
           >
             {showWatchMovie && (
@@ -246,6 +255,23 @@ function Search() {
               />
             )}
           </AccordionRoot>
+          <video
+            className={`video-loader -mt-[100px] ${
+              isLoading && showWatchMovie ? "opacity-100" : "opacity-0"
+            }`}
+            width="200px"
+            autoPlay
+            loop
+            muted
+            style={{
+              maskImage:
+                "radial-gradient(circle at center, black 35%, transparent 60%)",
+            }}
+          >
+            <source src={loader} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div ref={messagesEndRef} />
         </div>
       </div>
       <div

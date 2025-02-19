@@ -18,6 +18,7 @@ function DisplayFlicker({ onClick }) {
     <Accordion
       label="Why is my display flickering?"
       value="item-2"
+      className="-mt-[140px]"
       onClick={onClick}
     >
       <div className="flex flex-col gap-6">

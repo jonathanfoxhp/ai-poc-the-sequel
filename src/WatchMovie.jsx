@@ -26,7 +26,6 @@ function WatchMovie({ onClick }) {
   };
 
   const scrollToBottom = () => {
-    console.log("scroll");
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -140,7 +139,7 @@ function WatchMovie({ onClick }) {
           )}
         </div>
       </Accordion>
-      <div ref={messagesEndRef} className="mt-[100px]" />
+      <div ref={messagesEndRef} className="mt-[140px]" />
     </>
   );
 }
