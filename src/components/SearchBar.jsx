@@ -12,10 +12,11 @@ function SearchBar({
   onPrimaryButtonClick,
   primaryButtonDisabled,
   isLoading,
+  className,
   ...other
 }) {
   return (
-    <div className="relative w-full">
+    <div className={"relative w-full searchbar" + className} {...other}>
       <input
         type="text"
         className="jumbo-input mb-4"
@@ -24,7 +25,7 @@ function SearchBar({
         value={value}
         onChange={onChange}
       />
-      <span className="absolute right-2 top-2 flex gap-3">
+      <span className="absolute right-2 top-2 flex gap-3 searchbar-controls">
         <img src={micOnIcon} />
         <PrimaryIconButton
           disabled={primaryButtonDisabled}

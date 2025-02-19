@@ -6,6 +6,10 @@ import DisplayFlicker from "./DisplayFlicker";
 import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
 import aiLoadingIndicator from "/aiLoadingIndicator.svg";
+import loader from "/loader.mp4";
+
+import React from "react";
+
 import AccordionRoot from "./components/AccordionRoot";
 
 function Search() {
@@ -34,7 +38,9 @@ function Search() {
   const executePrimarySearchPrompt = () => {
     const newPromptText = primarySearchText;
     setPrimaryPromptText(newPromptText);
+
     setIsLoading(true);
+    //setPrimarySearchText("");
 
     setTimeout(() => {
       setShowWatchMovie(true);
@@ -112,28 +118,26 @@ function Search() {
           <div className={!showWatchMovie ? "w-fullr" : "w-full hidden"}>
             <div className="transition-all duration-500 animate-fadeSlideIn">
               <div
-                className={`date-subtitle mb-2 transition-all duration-500 ${
-                  showWatchMovie || isLoading
-                    ? "-translate-y-4"
-                    : "translate-y-0"
-                }`}
+                className={`date-subtitle mb-2 transition-all duration-500
+                `}
               >
                 Hello, Adam
               </div>
               <div
-                className={`transition-all duration-500 ${
-                  showWatchMovie || isLoading
-                    ? "-translate-y-4"
-                    : "translate-y-0"
-                }`}
+              // className={`transition-all duration-500 ${
+              //   showWatchMovie || isLoading
+              //     ? "-translate-y-4"
+              //     : "translate-y-0"
+              // }`}
               >
                 <h1 className="title  mt-0 !leading-tight greeting">
                   How can I help you today?
                 </h1>
               </div>
+
               {!showWatchMovie && isLoading && (
                 <div
-                  className={`prompt-while-loading-text mt-2 !leading transition-opacity duration-500 opacity-100`}
+                  className={`opacity-0 prompt-while-loading-text absolute top-[90px] w-full !leading animate-fadeSlideInDelay4 !duration-75`}
                 >
                   {primaryPromptText}
                 </div>
@@ -141,24 +145,32 @@ function Search() {
             </div>
           </div>
 
-          <div
-            //problematic
-            className={`  w-full mt-6 ${
+          {/* <div
+            className={` absolute top-[212px] w-full mt-6 group ${
               !primarySearchVisible
-                ? "animate-fadeSlideOutDelay3"
+                ? "animate-searchSlideOut"
                 : "animate-fadeSlideIn"
             }`}
           >
-            <SearchBar
-              id="pb4"
-              placeholder="Ask me anything about optimizing device settings..."
-              value={primarySearchText}
-              onChange={(e) => setPrimarySearchText(e.target.value)}
-              onKeyDown={handlePrimarySearchKeyDown}
-              onPrimaryButtonClick={executePrimarySearchPrompt}
-              primaryButtonDisabled={primarySearchText.length < 1}
-            />
-          </div>
+            <span
+              className={`${!primarySearchVisible ? "animate-fadeOut" : ""}`}
+            > */}
+          <SearchBar
+            className={` absolute w-full mt-6 group ${
+              !primarySearchVisible
+                ? "animate-searchSlideOut"
+                : "animate-fadeSlideIn"
+            }`}
+            id="pb4"
+            placeholder="Ask me anything about optimizing device settings..."
+            value={primarySearchText}
+            onChange={(e) => setPrimarySearchText(e.target.value)}
+            onKeyDown={handlePrimarySearchKeyDown}
+            onPrimaryButtonClick={executePrimarySearchPrompt}
+            primaryButtonDisabled={primarySearchText.length < 1}
+          />
+          {/* </span>
+          </div> */}
 
           {/* //problematic */}
           <div
@@ -193,12 +205,11 @@ function Search() {
               }`}
             />
           </div>
-          {isLoading && (
-            <img
-              src={aiLoadingIndicator}
-              className="animate-ping [animation-duration:2s] mt-6"
-            />
-          )}
+          <video width="100px" autoPlay loop muted>
+            <source src={loader} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
           <AccordionRoot
             className="w-full flex flex-col gap-6"
             value={accordionValue}

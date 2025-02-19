@@ -17,12 +17,12 @@ function WatchMovie({ onClick }) {
 
   const onActivateAllSettings = () => {
     setConversationStage(1);
-    scrollToBottom();
+    // scrollToBottom();
   };
 
   const onDisableToastNotifications = () => {
     setConversationStage(2);
-    scrollToBottom();
+    // scrollToBottom();
   };
 
   const scrollToBottom = () => {

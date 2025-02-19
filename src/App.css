@@ -254,6 +254,15 @@ header {
   );
 }
 
+.animate-searchSlideOut input,
+.animate-searchSlideOut .searchbar-controls {
+  @apply animate-fadeOut;
+}
+
+.animate-searchSlideOut .searchbar-controls {
+  @apply opacity-0;
+}
+
 .card {
   @apply rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-4 pb-4 w-[236px];
 }

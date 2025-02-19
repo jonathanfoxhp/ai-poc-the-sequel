@@ -8,6 +8,40 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        searchSlideOut: {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            maxHeight: "100px",
+            borderRadius: "8px",
+            backgroundColor: "transparent",
+            width: "100px",
+            height: "100px",
+            borderRadius: "100%",
+            backgroundColor: "white",
+          },
+          "50%": {
+            opacity: "0.5",
+            transform: "translateY(80px)",
+            borderRadius: "50%",
+            backgroundColor: "#FFFFFF", // Ensures it turns white
+            width: "40px",
+            height: "40px",
+          },
+          "100%": {
+            opacity: "0",
+            padding: "none !important",
+            transform: "translateY(160px)",
+            width: "0px",
+            height: "0px",
+
+            visibility: "hidden",
+          },
+        },
         fadeSlideOut: {
           "0%": {
             opacity: "1",
@@ -16,7 +50,7 @@ export default {
           },
           "90%": {
             opacity: "0",
-            transform: "translateY(32px)",
+            top: "translateY(32px)",
             maxHeight: "100px",
           },
           "100%": {
@@ -39,6 +73,9 @@ export default {
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
+        fadeOut: "fadeOut 0.1s ease-in-out 1s",
+
+        searchSlideOut: "searchSlideOut 1s ease-in-out 0.75s forwards",
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",
         fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.25s forwards",
         fadeSlideOutDelay2: "fadeSlideOut 0.3125s ease-in-out 0.5s forwards",
@@ -49,6 +86,8 @@ export default {
         fadeSlideInDelay1: "fadeSlideIn 0.3125s ease-in-out 0.25s forwards",
         fadeSlideInDelay2: "fadeSlideIn 0.3125s ease-in-out 0.50s forwards",
         fadeSlideInDelay3: "fadeSlideIn 0.3125s ease-in-out 0.75s forwards",
+        fadeSlideInDelay4: "fadeSlideIn 0.3125s ease-in-out 1s forwards",
+        fadeSlideInDelay5: "fadeSlideIn 0.3125s ease-in-out 1.5s forwards",
 
         // accordionSlideDown: "accordionSlideDown 0.1s ease-out forwards",
         // accordionSlideUp: "accordionSlideUp 0.25s ease-out forwards",
