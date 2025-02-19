@@ -24,7 +24,7 @@ export default {
             borderRadius: "100%",
             backgroundColor: "white",
           },
-          "50%": {
+          "20%": {
             opacity: "0.5",
             transform: "translateY(80px)",
             borderRadius: "100%",
@@ -77,7 +77,7 @@ export default {
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeOut: "fadeOut 0.1s ease-in-out 1s",
 
-        searchSlideOut: "searchSlideOut 1s ease-in-out 0.75s forwards",
+        searchSlideOut: "searchSlideOut 1s ease-in-out 0.5s forwards",
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",
         fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.25s forwards",
         fadeSlideOutDelay2: "fadeSlideOut 0.3125s ease-in-out 0.5s forwards",
