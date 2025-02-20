@@ -70,7 +70,7 @@ function Search() {
       setShowDisplayFlicker(true);
       setIsLoading(false);
       setAccordionValue("item-2");
-    }, 5000);
+    }, 3000);
   };
 
   //not used yet
