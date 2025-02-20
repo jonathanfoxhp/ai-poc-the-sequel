@@ -1,7 +1,9 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import Accordion from "./components/Accordion";
 import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
+import AnimatedLines from "./components/AnimatedLines";
 
 function DisplayFlicker({ onClick }) {
   const [conversationStage, setConversationStage] = useState(0);
@@ -23,13 +25,15 @@ function DisplayFlicker({ onClick }) {
     >
       <div className="flex flex-col gap-6">
         {conversationStage >= 0 && (
-          <>
-            <AIText label="Display Flickering on HP Envy Laptop" />
+          <AnimatedLines>
+            <div className="text-base">
+              <AIText label="Display Flickering on HP Envy Laptop" />
+            </div>
             <div className="text-base">
               For HP Envy laptops, display flickering can often be attributed to
               several potential causes, including driver issues, hardware
               faults, or software conflicts. Unfortunately, without specific
-              documentation referring to the HP Envy Laptop 14-fe0xxx, I can't
+              documentation referring to the HP Envy Laptop 14-fe0xxx, I can&apos;t
               provide a specific fix. However, here are a few general steps
               based on similar models and common issues that you can try to
               resolve the flickering issue:
@@ -54,8 +58,8 @@ function DisplayFlicker({ onClick }) {
               <li>
                 <div className="font-bold">3. Display Settings:</div>
                 <div>
-                  Adjust your display settings. Go to "Settings" &gt; "System"
-                  &gt; "Display" and adjust the refresh rate if possible.
+                  Adjust your display settings. Go to &ldquo;Settings&rdquo; &gt; &ldquo;System&rdquo;
+                  &gt; &ldquo;Display&rdquo; and adjust the refresh rate if possible.
                 </div>
               </li>
               <li>
@@ -74,10 +78,10 @@ function DisplayFlicker({ onClick }) {
                 </div>
               </li>
             </ol>
-          </>
+          </AnimatedLines>
         )}
         {conversationStage === 0 && (
-          <div className="w-full flex  justify-between">
+          <div className="w-full flex justify-between">
             <CopyPaste />
           </div>
         )}
@@ -85,5 +89,9 @@ function DisplayFlicker({ onClick }) {
     </Accordion>
   );
 }
+
+DisplayFlicker.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 export default DisplayFlicker;
