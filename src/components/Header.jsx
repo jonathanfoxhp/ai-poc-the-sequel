@@ -24,6 +24,10 @@ function Header({ hasBack, page = "search" }) {
     navigate(url);
   };
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsHeaderVisible(window.scrollY <= 100);
@@ -65,7 +69,7 @@ function Header({ hasBack, page = "search" }) {
           )}
           {page === "search" ? (
             <SparkleIconButton
-              onClick={() => handleNavigate("/")}
+              onClick={() => refreshPage()}
               icon={<img src={aiIcon} />}
             />
           ) : (
