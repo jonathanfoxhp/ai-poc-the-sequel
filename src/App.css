@@ -200,6 +200,8 @@ header {
 
 .toggle-group {
   @apply inline-flex gap-0.5 rounded-full bg-hpxGrey/20 backdrop-blur-sm;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px
 }
 
 .icon-button--basic {
@@ -400,6 +402,9 @@ header {
 
 .toggle-group {
   @apply inline-flex gap-0.5 rounded-full bg-[#b5b7cb]/20 backdrop-blur-sm;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  margin-left: -54px;
 }
 
 .header-button {
