@@ -493,10 +493,10 @@ header {
 }
 
 .accordion-content[data-state="open"] {
-  animation: accordionSlideDown 100ms ease-out forwards;
+  animation: accordionSlideDown 200ms ease-out forwards;
 }
 .accordion-content[data-state="closed"] {
-  animation: accordionSlideUp 100ms ease-out forwards;
+  animation: accordionSlideUp 200ms ease-out forwards;
 }
 
 .copy-paste {
