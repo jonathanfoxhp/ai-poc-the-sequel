@@ -70,7 +70,7 @@ function Search() {
       setShowDisplayFlicker(true);
       setIsLoading(false);
       setAccordionValue("item-2");
-    }, 3000);
+    }, 2000);
   };
 
   //not used yet
@@ -101,7 +101,7 @@ function Search() {
 
   useEffect(() => {
     if (isLoading || showWatchMovie) {
-      setTimeout(() => setFooterSearchContainerVisible(true), 5000);
+      setTimeout(() => setFooterSearchContainerVisible(true), 3000);
       // setTimeout(() => setFooterButton1Visible(true), 5800);
       // setTimeout(() => setFooterButton2Visible(true), 6200);
       // setTimeout(() => setFooterButton3Visible(true), 6600);
@@ -219,9 +219,7 @@ function Search() {
           </div>
           <video
             className={`video-loader absolute top-[400px]  !delay-[2050ms] ${
-              isLoading && !showWatchMovie
-                ? "animate-fadein opacity-100"
-                : "opacity-0"
+              isLoading && !showWatchMovie ? "animate-fadein" : "opacity-0"
             }`}
             width="200px"
             autoPlay

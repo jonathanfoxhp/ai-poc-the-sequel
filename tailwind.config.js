@@ -75,7 +75,7 @@ export default {
             visibility: "hidden",
           },
           "100%": {
-            opacity: "0.20",
+            opacity: "0",
             padding: "none !important",
             transform: "translateY(210px)",
             width: "112px",
@@ -122,7 +122,7 @@ export default {
         fadeOut: "fadeOut 0.5s ease-in-out 1s",
         hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s",
         searchSlideOut:
-          "searchSlideOut 3.4s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards",
+          "searchSlideOut 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards",
 
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",
         fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.20s forwards",
