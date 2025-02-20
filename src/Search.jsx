@@ -52,7 +52,7 @@ function Search() {
     setTimeout(() => {
       setShowWatchMovie(true);
       setIsLoading(false);
-    }, 3000);
+    }, 3500);
   };
 
   const handleFooterSearchKeyDown = (e) => {
@@ -101,7 +101,7 @@ function Search() {
 
   useEffect(() => {
     if (isLoading || showWatchMovie) {
-      setTimeout(() => setFooterSearchContainerVisible(true), 3000);
+      setTimeout(() => setFooterSearchContainerVisible(true), 3500);
       // setTimeout(() => setFooterButton1Visible(true), 5800);
       // setTimeout(() => setFooterButton2Visible(true), 6200);
       // setTimeout(() => setFooterButton3Visible(true), 6600);
