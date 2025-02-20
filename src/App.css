@@ -260,7 +260,7 @@ header {
 
 .animate-searchSlideOut input,
 .animate-searchSlideOut .searchbar-controls {
-  @apply animate-hardFadeOut !delay-[1800ms] !text-transparent !bg-transparent;
+  @apply animate-hardFadeOut !delay-[750ms] !text-transparent !bg-transparent;
 }
 
 .animate-searchSlideOut .searchbar-controls,
@@ -455,7 +455,7 @@ header {
 }
 
 .accordion-trigger[data-state="open"] {
-  @apply text-2xl h-[56px];
+  @apply text-xl h-[56px];
 }
 
 .accordion-trigger[data-state="closed"] {

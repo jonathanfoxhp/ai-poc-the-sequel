@@ -169,7 +169,7 @@ function Search() {
               className={`${!primarySearchVisible ? "animate-fadeOut" : ""}`}
             > */}
           <SearchBar
-            className={` absolute w-full mt-6 group ${
+            className={`!absolute top-[220px] w-full group ${
               !primarySearchVisible
                 ? "animate-searchSlideOut"
                 : "animate-fadeSlideIn"
@@ -187,7 +187,7 @@ function Search() {
 
           {/* //problematic */}
           <div
-            className={`gap-3 flex items-start justify-center w-full mb-14  ${
+            className={`gap-3 flex items-start justify-center w-full mb-14 absolute top-[304px] ${
               !primarySearchVisible
                 ? "animate-fadeSlideOutDelay4"
                 : "animate-fadeSlideIn"
@@ -195,7 +195,7 @@ function Search() {
           >
             <AIPromptButton
               label="how do I upgrade my PC?"
-              className={`${
+              className={` ${
                 !primarySearchVisible
                   ? "animate-fadeSlideOutDelay2"
                   : "animate-fadeSlideInDelay1 opacity-0"
@@ -211,7 +211,7 @@ function Search() {
             />
             <AIPromptButton
               label="how do I replace my PC?"
-              className={` ${
+              className={`  ${
                 !primarySearchVisible
                   ? "animate-fadeSlideOut"
                   : "animate-fadeSlideInDelay3 opacity-0"
@@ -219,8 +219,10 @@ function Search() {
             />
           </div>
           <video
-            className={`video-loader absolute top-[400px]  !delay-[2050ms] ${
-              isLoading && !showWatchMovie ? "animate-fadein" : "opacity-0"
+            className={`video-loader absolute top-[390px]  !delay-[1600ms] ${
+              isLoading && !showWatchMovie
+                ? "animate-fadein !duration-500"
+                : "opacity-0"
             }`}
             width="200px"
             autoPlay

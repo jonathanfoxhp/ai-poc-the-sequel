@@ -32,11 +32,11 @@ export default {
           "0%": {
             opacity: "1",
             transform: "translateY(0)",
-            maxHeight: "112px",
+            maxHeight: "124px",
             borderRadius: "8px",
             backgroundColor: "transparent",
-            width: "112px",
-            height: "112px",
+            width: "124px",
+            height: "124px",
             borderRadius: "100%",
             backgroundColor: "white",
           },
@@ -45,41 +45,53 @@ export default {
             opacity: "0.5",
             transform: "translateY(210px)",
             borderRadius: "100%",
-            backgroundColor: "#FFFFFF", // Ensures it turns white
-            width: "112px",
-            height: "112px",
-            border: "solid 6px white",
+            backgroundColor: "#E0DBFD", // Ensures it turns white
+            width: "124px",
+            height: "124px",
+            border: "solid 5px white",
             backgroundColor: "transparent",
             overflow: "hidden",
           },
-          "60%": {
+          "50%": {
             opacity: "0.35",
             transform: "translateY(210px)",
             borderRadius: "100%",
-            backgroundColor: "#FFFFFF", // Ensures it turns white
-            width: "112px",
-            height: "112px",
-            border: "solid 6px white",
+            backgroundColor: "#E0DBFD", // Ensures it turns white
+            width: "124px",
+            height: "124px",
+            border: "solid 5px #E0DBFD",
             backgroundColor: "transparent",
             overflow: "hidden",
           },
 
-          "75%": {
+          "60%": {
             opacity: "0.25",
             padding: "none !important",
             transform: "translateY(210px)",
-            width: "112px",
-            height: "112px",
-            overflow: "hidden",
+            width: "124px",
+            height: "124px",
+          },
 
-            visibility: "hidden",
+          "70%": {
+            opacity: "0.15",
+            padding: "none !important",
+            transform: "translateY(210px)",
+            width: "124px",
+            height: "124px",
+          },
+          "80%": {
+            opacity: "0.05",
+            padding: "none !important",
+            transform: "translateY(210px)",
+            width: "124px",
+            height: "124px",
           },
           "100%": {
             opacity: "0",
             padding: "none !important",
             transform: "translateY(210px)",
-            width: "112px",
-            height: "112px",
+            width: "124px",
+            height: "124px",
             overflow: "hidden",
 
             visibility: "hidden",
@@ -96,7 +108,7 @@ export default {
           "90%": {
             opacity: "0",
             transform: "translateY(32px)",
-            maxHeight: "112px",
+            maxHeight: "124px",
           },
           "100%": {
             marginTop: "0px",
@@ -122,12 +134,12 @@ export default {
         fadeOut: "fadeOut 0.5s ease-in-out 1s",
         hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s",
         searchSlideOut:
-          "searchSlideOut 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards",
+          "searchSlideOut 3.4s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards",
 
         fadeSlideOut: "fadeSlideOut 1s ease-in-out forwards",
-        fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.20s forwards",
-        fadeSlideOutDelay2: "fadeSlideOut 0.3125s ease-in-out 0.40s forwards",
-        fadeSlideOutDelay3: "fadeSlideOut 0.3125s ease-in-out 0.60s forwards",
+        fadeSlideOutDelay1: "fadeSlideOut 0.3125s ease-in-out 0.25s forwards",
+        fadeSlideOutDelay2: "fadeSlideOut 0.3125s ease-in-out 0.50s forwards",
+        fadeSlideOutDelay3: "fadeSlideOut 0.3125s ease-in-out 0.85s forwards",
         fadeSlideOutDelay4: "fadeSlideOut 0.3125s ease-in-out 1s forwards",
 
         fadeSlideIn: "fadeSlideIn 0.5s ease-in-out forwards",

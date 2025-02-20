@@ -16,7 +16,7 @@ function SearchBar({
   ...other
 }) {
   return (
-    <div className={"relative w-full searchbar" + className} {...other}>
+    <div className={"relative w-full searchbar " + className} {...other}>
       <input
         type="text"
         className="jumbo-input mb-4"
