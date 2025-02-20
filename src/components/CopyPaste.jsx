@@ -1,8 +1,8 @@
 import copy from "/icons/copy.svg";
 
-function CopyPaste({ ...other }) {
+function CopyPaste({ className, ...other }) {
   return (
-    <div className="copy-paste" {...other}>
+    <div className={`${className} copy-paste`} {...other}>
       <img src={copy} />
       <span>Copy</span>
     </div>

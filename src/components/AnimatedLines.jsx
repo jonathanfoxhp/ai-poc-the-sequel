@@ -1,33 +1,36 @@
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 const AnimatedLines = ({ children }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    console.log('AnimatedLines mounted, container:', containerRef.current);
+    console.log("AnimatedLines mounted, container:", containerRef.current);
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        console.log('Observer callback fired', entries);
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log('Element is intersecting');
+            console.log("Element is intersecting");
+
             const elements = [];
-            
+
             const walker = document.createTreeWalker(
               entry.target,
               NodeFilter.SHOW_ELEMENT,
               {
                 acceptNode: (node) => {
                   if (
-                    (node.classList.contains('text-base') && node.tagName === 'DIV') ||
-                    node.tagName === 'LI'
+                    (node.classList.contains("text-base") &&
+                      node.tagName === "DIV") ||
+                    node.tagName === "LI" ||
+                    node.classList.contains("ai-conversation-pill") ||
+                    node.classList.contains("ai-text")
                   ) {
                     return NodeFilter.FILTER_ACCEPT;
                   }
                   return NodeFilter.FILTER_SKIP;
-                }
+                },
               }
             );
 
@@ -37,23 +40,25 @@ const AnimatedLines = ({ children }) => {
               currentNode = walker.nextNode();
             }
 
-            console.log('Found elements:', elements);
+            console.log("Found elements:", elements);
 
             // Set initial styles
-            elements.forEach(element => {
-              element.style.opacity = '0';
-              element.style.transform = 'translateX(-20px)';
-              element.style.transition = 'all 0.5s ease-out';
+            elements.forEach((element) => {
+              element.style.opacity = "0";
+              element.style.transform = "translateX(-20px)";
+              element.style.transition = "all 0.5s ease-out";
             });
 
             // Animate elements with delay
             elements.forEach((element, index) => {
-              console.log(`Animating element ${index}:`, element);
               setTimeout(() => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateX(0)';
-              }, index * 200); // 200ms delay between each element
+                element.style.opacity = "1";
+                element.style.transform = "translateX(0)";
+              }, index * 200);
             });
+
+            // **Unobserve after first intersection**
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -64,7 +69,7 @@ const AnimatedLines = ({ children }) => {
       observer.observe(containerRef.current);
     }
 
-    return () => observer?.disconnect();
+    return () => observer.disconnect(); // Cleanup observer on unmount
   }, []);
 
   return (
@@ -75,7 +80,7 @@ const AnimatedLines = ({ children }) => {
 };
 
 AnimatedLines.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
-export default AnimatedLines; 
+export default AnimatedLines;

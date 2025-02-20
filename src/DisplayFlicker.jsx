@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Accordion from "./components/Accordion";
 import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
@@ -26,20 +26,20 @@ function DisplayFlicker({ onClick }) {
       <div className="flex flex-col gap-6">
         {conversationStage >= 0 && (
           <AnimatedLines>
-            <div className="text-base">
+            <div className="text-base opacity-0">
               <AIText label="Display Flickering on HP Envy Laptop" />
             </div>
-            <div className="text-base">
+            <div className="text-base opacity-0">
               For HP Envy laptops, display flickering can often be attributed to
               several potential causes, including driver issues, hardware
               faults, or software conflicts. Unfortunately, without specific
-              documentation referring to the HP Envy Laptop 14-fe0xxx, I can&apos;t
-              provide a specific fix. However, here are a few general steps
-              based on similar models and common issues that you can try to
-              resolve the flickering issue:
+              documentation referring to the HP Envy Laptop 14-fe0xxx, I
+              can&apos;t provide a specific fix. However, here are a few general
+              steps based on similar models and common issues that you can try
+              to resolve the flickering issue:
             </div>
             <ol className="text-base flex flex-col gap-3">
-              <li>
+              <li className="opacity-0">
                 <div className="font-bold">1. Update Graphics Drivers:</div>
                 <div>
                   Ensure your graphics drivers are up to date. For example, you
@@ -47,7 +47,7 @@ function DisplayFlicker({ onClick }) {
                   depending on your configuration from the HP Drivers page.
                 </div>
               </li>
-              <li>
+              <li className="opacity-0">
                 <div className="font-bold">2. BIOS Update:</div>
                 <div>
                   Sometimes a BIOS update may resolve display issues. You can
@@ -55,14 +55,15 @@ function DisplayFlicker({ onClick }) {
                   and Driver Downloads page.
                 </div>
               </li>
-              <li>
+              <li className="opacity-0">
                 <div className="font-bold">3. Display Settings:</div>
                 <div>
-                  Adjust your display settings. Go to &ldquo;Settings&rdquo; &gt; &ldquo;System&rdquo;
-                  &gt; &ldquo;Display&rdquo; and adjust the refresh rate if possible.
+                  Adjust your display settings. Go to &ldquo;Settings&rdquo;
+                  &gt; &ldquo;System&rdquo; &gt; &ldquo;Display&rdquo; and
+                  adjust the refresh rate if possible.
                 </div>
               </li>
-              <li>
+              <li className="opacity-0">
                 <div className="font-bold">4. Hardware Connection:</div>
                 <div>
                   Ensure that all hardware connections inside the laptop are
@@ -70,7 +71,7 @@ function DisplayFlicker({ onClick }) {
                   the display connector to the motherboard.
                 </div>
               </li>
-              <li>
+              <li className="opacity-0">
                 <div className="font-bold">5. External Interference:</div>
                 <div>
                   Ensure there are no sources of electromagnetic interference
@@ -91,7 +92,7 @@ function DisplayFlicker({ onClick }) {
 }
 
 DisplayFlicker.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default DisplayFlicker;

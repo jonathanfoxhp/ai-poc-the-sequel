@@ -201,7 +201,7 @@ header {
 .toggle-group {
   @apply inline-flex gap-0.5 rounded-full bg-hpxGrey/20 backdrop-blur-sm;
   background-color: rgba(255, 255, 255, 0.3);
-  padding: 5px
+  padding: 5px;
 }
 
 .icon-button--basic {
@@ -422,7 +422,7 @@ header {
 }
 
 .ai-conversation-pill {
-  @apply bg-[#fff] bg-opacity-60 active:bg-[#EDF0FF]
+  @apply bg-[#fff] bg-opacity-60 active:bg-[#EDF0FF] transition-colors duration-200
   border h-10 gap-2 flex rounded-full px-4 text-base border-solid border-hpxBlue items-center justify-center;
 }
 

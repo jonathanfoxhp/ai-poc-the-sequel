@@ -1,8 +1,8 @@
 import aiIcon from "/icons/aiTextIcon.svg";
 
-function AIText({ label, ...other }) {
+function AIText({ className, label, ...other }) {
   return (
-    <div className="ai-text" {...other}>
+    <div className={`ai-text ${className}`} {...other}>
       <img src={aiIcon} />
       <span>{label}</span>
     </div>

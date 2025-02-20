@@ -86,18 +86,22 @@ function WatchMovie({ onClick }) {
           )}
 
           {conversationStage >= 1 && (
-            <>
+            <AnimatedLines>
               <div className="w-full flex justify-between">
-                <CopyPaste />
+                <CopyPaste className="opacity-0" />
                 <AIConversationPill
+                  className="opacity-0"
                   checked
                   icon={<img src={checkMark} />}
                   label="Movie settings applied"
                 />
               </div>
-              <AIText label="All done! Movie mode is now activated. Here are some related recommendations" />
+              <div className="text-base opacity-0">
+                <AIText label="All done! Movie mode is now activated. Here are some related recommendations" />
+              </div>
               <div className="w-full flex justify-end">
                 <AIConversationPill
+                  className="opacity-0"
                   icon={
                     <img src={conversationStage >= 2 ? checkMark : bellSlash} />
                   }
@@ -106,7 +110,7 @@ function WatchMovie({ onClick }) {
                   onClick={onDisableToastNotifications}
                 />
               </div>
-            </>
+            </AnimatedLines>
           )}
           {conversationStage == 1 && (
             <div className="w-full flex justify-end">
@@ -118,10 +122,14 @@ function WatchMovie({ onClick }) {
           )}
 
           {conversationStage >= 2 && (
-            <>
-              <AIText label="All done! Toast has been disabled. Here are some related recommendations" />
+            <AnimatedLines>
+              <AIText
+                className="opacity-0"
+                label="All done! Toast has been disabled. Here are some related recommendations"
+              />
               <div className="w-full flex justify-end">
                 <AIConversationPill
+                  className="opacity-0"
                   icon={<img src={aiCircle} />}
                   label="Make these my default movie mode"
                   // onClick={onDisableToastNotifications}
@@ -129,17 +137,19 @@ function WatchMovie({ onClick }) {
               </div>
               <div className="w-full flex justify-end">
                 <AIConversationPill
+                  className="opacity-0"
                   icon={<img src={speed} />}
                   label="Enable high performance"
                 />
               </div>
               <div className="w-full flex justify-end">
                 <AIConversationPill
+                  className="opacity-0"
                   icon={<img src={play} />}
                   label="Recommend movies"
                 />
               </div>
-            </>
+            </AnimatedLines>
           )}
         </div>
       </Accordion>
