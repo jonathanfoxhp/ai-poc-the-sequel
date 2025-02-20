@@ -52,7 +52,7 @@ function Search() {
     setTimeout(() => {
       setShowWatchMovie(true);
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
   };
 
   const handleFooterSearchKeyDown = (e) => {

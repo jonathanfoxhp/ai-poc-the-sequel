@@ -464,7 +464,7 @@ header {
 }
 
 .accordion-content {
-  @apply py-8 border-t border-solid border-[#EDEEFE] overflow-scroll;
+  @apply py-8 border-t border-solid border-[#EDEEFE];
 }
 
 @keyframes accordionSlideDown {
