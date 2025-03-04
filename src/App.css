@@ -258,7 +258,7 @@ header {
   );
 }
 
-.animate-searchSlideOut input,
+/* .animate-searchSlideOut input,
 .animate-searchSlideOut .searchbar-controls {
   @apply animate-hardFadeOut !delay-[750ms] !text-transparent !bg-transparent;
 }
@@ -266,7 +266,7 @@ header {
 .animate-searchSlideOut .searchbar-controls,
 .animate-searchSlideOut input::placeholder {
   @apply hidden;
-}
+} */
 
 .card {
   @apply rounded-3xl border border-white border-opacity-30 backdrop-blur-sm flex flex-col gap-2 pl-6 pr-4 pt-4 pb-4 w-[236px];
@@ -493,10 +493,10 @@ header {
 }
 
 .accordion-content[data-state="open"] {
-  animation: accordionSlideDown 150ms ease-out forwards;
+  animation: accordionSlideDown 25ms ease-out forwards;
 }
 .accordion-content[data-state="closed"] {
-  animation: accordionSlideUp 150ms ease-out forwards;
+  animation: accordionSlideUp 25ms ease-out forwards;
 }
 
 .copy-paste {
@@ -513,4 +513,10 @@ header {
 .icon-button--sparkle,
 .icon-button--secondary {
   @apply transition-all ease-in-out duration-200;
+}
+
+.prompt-scroll-container {
+  @apply gap-3 flex items-start w-full overflow-x-auto whitespace-nowrap;
+  scrollbar-width: none;
+  -webkit-mask: linear-gradient(90deg, #0000, #000 10% 80%, #0000);
 }

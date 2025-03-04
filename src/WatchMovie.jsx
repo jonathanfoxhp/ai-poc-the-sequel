@@ -152,8 +152,8 @@ function WatchMovie({ onClick }) {
             </AnimatedLines>
           )}
         </div>
+        <div ref={messagesEndRef} className="absolute bottom-0" />
       </Accordion>
-      <div ref={messagesEndRef} className="mt-[140px]" />
     </>
   );
 }

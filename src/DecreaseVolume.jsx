@@ -5,7 +5,7 @@ import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
 import AnimatedLines from "./components/AnimatedLines";
 
-function DisplayFlicker({ onClick }) {
+function DecreaseVolume({ onClick }) {
   const [conversationStage, setConversationStage] = useState(0);
 
   const onActivateAllSettings = () => {
@@ -18,8 +18,8 @@ function DisplayFlicker({ onClick }) {
 
   return (
     <Accordion
-      label="Why is my display flickering?"
-      value="item-2"
+      label="Decrease volume to 60%"
+      value="item-3"
       // className="-mt-[140px]"
       onClick={onClick}
     >
@@ -27,7 +27,7 @@ function DisplayFlicker({ onClick }) {
         {conversationStage >= 0 && (
           <AnimatedLines>
             <div className="text-base opacity-0">
-              <AIText label="Display Flickering on HP Envy Laptop" />
+              <AIText label="lorem ipsum dolorem" />
             </div>
             <div className="text-base opacity-0">
               For HP Envy laptops, display flickering can often be attributed to
@@ -91,8 +91,8 @@ function DisplayFlicker({ onClick }) {
   );
 }
 
-DisplayFlicker.propTypes = {
+DecreaseVolume.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default DisplayFlicker;
+export default DecreaseVolume;

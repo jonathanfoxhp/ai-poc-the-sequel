@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header";
 import WatchMovie from "./WatchMovie";
 import DisplayFlicker from "./DisplayFlicker";
+import DecreaseVolume from "./DecreaseVolume";
+
 //import SearchPromptList from "./SearchPromptList";
 import AIPromptButton from "./components/AIPromptButton";
 import SearchBar from "./components/SearchBar";
@@ -19,6 +21,7 @@ function Search() {
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [showWatchMovie, setShowWatchMovie] = useState(false); // Loading state
   const [showDisplayFlicker, setShowDisplayFlicker] = useState(false); // Loading state
+  const [showDecreaseVolume, setShowDecreaseVolume] = useState(false); // Loading state
 
   const [primarySearchText, setPrimarySearchText] = useState("");
   const [primaryPromptText, setPrimaryPromptText] = useState("");
@@ -73,6 +76,19 @@ function Search() {
     }, 2000);
   };
 
+  const executeDecreaseVolume = () => {
+    setIsLoading(true);
+    scrollToBottom();
+    setTimeout(() => {
+      const newPromptText = "Decrease volume to 60%";
+      setFooterPromptText(newPromptText);
+      setPrimaryPromptText(newPromptText);
+      setShowDecreaseVolume(true);
+      setIsLoading(false);
+      setAccordionValue("item-3");
+    }, 2000);
+  };
+
   //not used yet
   // const onPromptButtonClick = (promptButtonText) => {
   //   setPrimaryPromptText(promptButtonText);
@@ -114,14 +130,27 @@ function Search() {
       // setFooterSearchBarVisible(false);
     }
   }, [isLoading, showWatchMovie]);
+
+  // console.log("-------------------");
+  console.log("showDecreaseVolume: " + showDecreaseVolume);
+  console.log("showDisplayFlicker: " + showDisplayFlicker);
+  console.log("showWatchMovie: " + showWatchMovie);
+  console.log("-------------------");
+
   return (
     <>
       <div className={`background-flourish-container ${isLoading ? "" : ""}`} />
       <Header page="search" />
       <div className="content-wrapper">
-        <div className="content mt-[4.5rem]">
-          <div className={!showWatchMovie ? "w-fullr" : "w-full hidden"}>
-            <div className="transition-all duration-500 animate-fadeSlideIn">
+        <div className="content">
+          <div
+            className={
+              !showWatchMovie
+                ? "w-full  absolute top-[120px]"
+                : "w-full  absolute top-[120px] animate-fadeSlideUpAndOut !delay-[400ms]"
+            }
+          >
+            <div className="transition-all duration-500 animate-fadeSlideIn ">
               <div
                 className={`date-subtitle mb-2 transition-all duration-500
                 `}
@@ -150,14 +179,13 @@ function Search() {
 
               {!showWatchMovie && isLoading && (
                 <div
-                  className={`opacity-0 prompt-while-loading-text absolute top-[90px] w-full !leading animate-fadeSlideInDelay4 !duration-75`}
+                  className={`opacity-0 prompt-while-loading-text absolute top-[90px] w-full !leading animate-fadeSlideInDelay2 !duration-75`}
                 >
                   {primaryPromptText}
                 </div>
               )}
             </div>
           </div>
-
           {/* <div
             className={` absolute top-[212px] w-full mt-6 group ${
               !primarySearchVisible
@@ -169,9 +197,9 @@ function Search() {
               className={`${!primarySearchVisible ? "animate-fadeOut" : ""}`}
             > */}
           <SearchBar
-            className={`!absolute top-[220px] w-full group ${
+            className={`!absolute top-[240px] w-full group ${
               !primarySearchVisible
-                ? "animate-searchSlideOut"
+                ? "animate-contractFadeOut"
                 : "animate-fadeSlideIn"
             }`}
             id="pb4"
@@ -182,44 +210,61 @@ function Search() {
             onPrimaryButtonClick={executePrimarySearchPrompt}
             primaryButtonDisabled={primarySearchText.length < 1}
           />
-          {/* </span>
-          </div> */}
 
-          {/* //problematic */}
-          <div
-            className={`gap-3 flex items-start justify-center w-full mb-14 absolute top-[304px] ${
-              !primarySearchVisible
-                ? "animate-fadeSlideOutDelay4"
-                : "animate-fadeSlideIn"
-            }`}
-          >
-            <AIPromptButton
-              label="how do I upgrade my PC?"
-              className={` ${
+          <div className="absolute w-full mb-14 top-[342px]">
+            <div
+              className={`prompt-scroll-container ${
                 !primarySearchVisible
-                  ? "animate-fadeSlideOutDelay2"
-                  : "animate-fadeSlideInDelay1 opacity-0"
+                  ? "animate-fadeSlideOutDelay4"
+                  : "animate-fadeSlideIn"
               }`}
-            />
-            <AIPromptButton
-              label="how do I speed up my games?"
-              className={`${
-                !primarySearchVisible
-                  ? "animate-fadeSlideOutDelay1"
-                  : "animate-fadeSlideInDelay2 opacity-0"
-              }`}
-            />
-            <AIPromptButton
-              label="how do I replace my PC?"
-              className={`  ${
-                !primarySearchVisible
-                  ? "animate-fadeSlideOut"
-                  : "animate-fadeSlideInDelay3 opacity-0"
-              }`}
-            />
+            >
+              <AIPromptButton
+                label="Decrease volume to 60%"
+                className={` ${
+                  !primarySearchVisible
+                    ? "animate-fadeSlideOutDelay2"
+                    : "animate-fadeSlideInDelay1 opacity-0"
+                }`}
+                onClick={executeDecreaseVolume}
+              />
+              <AIPromptButton
+                label="Blur camera background"
+                className={`${
+                  !primarySearchVisible
+                    ? "animate-fadeSlideOutDelay1"
+                    : "animate-fadeSlideInDelay2 opacity-0"
+                }`}
+              />
+              <AIPromptButton
+                label="Increase brightness to 95%"
+                className={`  ${
+                  !primarySearchVisible
+                    ? "animate-fadeSlideOut"
+                    : "animate-fadeSlideInDelay3 opacity-0"
+                }`}
+              />
+              <AIPromptButton
+                label="How do I upgrade my PC?"
+                className={`  ${
+                  !primarySearchVisible
+                    ? "animate-fadeSlideOut"
+                    : "animate-fadeSlideInDelay3 opacity-0"
+                }`}
+              />
+              <AIPromptButton
+                label="How do I speed up my games?"
+                className={`  ${
+                  !primarySearchVisible
+                    ? "animate-fadeSlideOut"
+                    : "animate-fadeSlideInDelay3 opacity-0"
+                }`}
+              />
+            </div>
           </div>
+
           <video
-            className={`video-loader absolute top-[390px]  !delay-[1600ms] ${
+            className={`video-loader absolute top-[360px]  !delay-[400ms] ${
               isLoading && !showWatchMovie
                 ? "animate-fadein !duration-500"
                 : "opacity-0"
@@ -236,7 +281,6 @@ function Search() {
             <source src={loader} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
           <AccordionRoot
             className="w-full flex flex-col gap-2"
             value={accordionValue}
@@ -255,9 +299,18 @@ function Search() {
                 }
               />
             )}
+
+            {showDecreaseVolume && (
+              <DecreaseVolume
+                onClick={() =>
+                  setAccordionValue(accordionValue === "item-3" ? "" : "item-3")
+                }
+              />
+            )}
           </AccordionRoot>
+
           <video
-            className={`video-loader -mt-[100px] ${
+            className={`video-loader mt-[20px] ${
               isLoading && showWatchMovie ? "opacity-100" : "opacity-0"
             }`}
             width="200px"
@@ -281,25 +334,38 @@ function Search() {
         }`}
       >
         <div className="w-[740px]">
-          <div className="gap-3 flex items-start justify-center w-full mb-6">
+          <div className="prompt-scroll-container  mb-6">
             <AIPromptButton
-              label="how do I upgrade my PC?"
+              label="Decrease volume to 60%"
               className={`opacity-0 ${
                 footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
               }`}
+              onClick={executeDecreaseVolume}
             />
             <AIPromptButton
-              label="how do I speed up my games?"
+              label="Blur camera background"
               className={`opacity-0 ${
                 footerSearchContainerVisible ? "animate-fadeSlideInDelay1" : ""
               }`}
             />
             <AIPromptButton
-              label="how do I replace my PC?"
+              label="Increase brightness to 95%"
               className={`opacity-0 ${
                 footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
               }`}
-              x
+            />
+            <AIPromptButton
+              label="How do I upgrade my PC?"
+              className={`opacity-0 ${
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+              }`}
+            />
+
+            <AIPromptButton
+              label="How do I speed up my games?"
+              className={`opacity-0 ${
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+              }`}
             />
           </div>
           <div
