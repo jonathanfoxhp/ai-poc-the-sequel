@@ -141,6 +141,7 @@ function Search() {
     <>
       <div className={`background-flourish-container ${isLoading ? "" : ""}`} />
       <Header page="search" />
+
       <div className="content-wrapper">
         <div className="content">
           <div
@@ -328,6 +329,7 @@ function Search() {
           <div ref={messagesEndRef} />
         </div>
       </div>
+
       <div
         className={`opacity-0 footer-search ${
           footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
