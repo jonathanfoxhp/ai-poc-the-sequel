@@ -14,6 +14,7 @@ export default {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+
         hardFadeOut: {
           "0%": { opacity: "1" },
           "10%": {
@@ -167,6 +168,7 @@ export default {
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeOut: "fadeOut 0.5s ease-in-out 1s",
+
         hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s",
         contractFadeOut: "contractFadeOut 0.75s ease-in-out forwards",
 

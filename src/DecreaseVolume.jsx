@@ -4,11 +4,13 @@ import Accordion from "./components/Accordion";
 import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
 import AnimatedLines from "./components/AnimatedLines";
+import PrimaryButton from "./components/PrimaryButton";
 
 function DecreaseVolume({ onClick }) {
   const [conversationStage, setConversationStage] = useState(0);
 
-  const onActivateAllSettings = () => {
+  const enableNoiseCancellation = () => {
+    console.log("enableNoiseCancellation");
     setConversationStage(1);
   };
 
@@ -27,64 +29,30 @@ function DecreaseVolume({ onClick }) {
         {conversationStage >= 0 && (
           <AnimatedLines>
             <div className="text-base opacity-0">
-              <AIText label="lorem ipsum dolorem" />
+              <AIText label="Decrease volume to 60%" />
             </div>
             <div className="text-base opacity-0">
-              For HP Envy laptops, display flickering can often be attributed to
-              several potential causes, including driver issues, hardware
-              faults, or software conflicts. Unfortunately, without specific
-              documentation referring to the HP Envy Laptop 14-fe0xxx, I
-              can&apos;t provide a specific fix. However, here are a few general
-              steps based on similar models and common issues that you can try
-              to resolve the flickering issue:
+              Your speaker volume has been adjusted from 100% to 60%. If you’re
+              in a noisy environment, consider enabling noise cancellation to
+              minimize distractions. Remember, these controls empower you to
+              tailor your audio experience.
             </div>
-            <ol className="text-base flex flex-col gap-3">
-              <li className="opacity-0">
-                <div className="font-bold">1. Update Graphics Drivers:</div>
-                <div>
-                  Ensure your graphics drivers are up to date. For example, you
-                  can download the latest AMD or Intel graphics drivers
-                  depending on your configuration from the HP Drivers page.
-                </div>
-              </li>
-              <li className="opacity-0">
-                <div className="font-bold">2. BIOS Update:</div>
-                <div>
-                  Sometimes a BIOS update may resolve display issues. You can
-                  check for BIOS updates from the HP Customer Support - Software
-                  and Driver Downloads page.
-                </div>
-              </li>
-              <li className="opacity-0">
-                <div className="font-bold">3. Display Settings:</div>
-                <div>
-                  Adjust your display settings. Go to &ldquo;Settings&rdquo;
-                  &gt; &ldquo;System&rdquo; &gt; &ldquo;Display&rdquo; and
-                  adjust the refresh rate if possible.
-                </div>
-              </li>
-              <li className="opacity-0">
-                <div className="font-bold">4. Hardware Connection:</div>
-                <div>
-                  Ensure that all hardware connections inside the laptop are
-                  secure. If comfortable, you can open the back panel and check
-                  the display connector to the motherboard.
-                </div>
-              </li>
-              <li className="opacity-0">
-                <div className="font-bold">5. External Interference:</div>
-                <div>
-                  Ensure there are no sources of electromagnetic interference
-                  near the laptop. Move it away from other electronic devices.
-                </div>
-              </li>
-            </ol>
+
+            {conversationStage === 0 && (
+              <div className="w-full flex justify-between">
+                <CopyPaste />
+                <PrimaryButton
+                  label="Enable noise cancellation"
+                  onClick={enableNoiseCancellation}
+                />
+              </div>
+            )}
+            {conversationStage === 1 && (
+              <div className="text-base">
+                <AIText label="Noise cancellation has been enabled" />
+              </div>
+            )}
           </AnimatedLines>
-        )}
-        {conversationStage === 0 && (
-          <div className="w-full flex justify-between">
-            <CopyPaste />
-          </div>
         )}
       </div>
     </Accordion>

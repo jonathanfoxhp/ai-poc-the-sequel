@@ -18,6 +18,8 @@ import AccordionRoot from "./components/AccordionRoot";
 function Search() {
   const messagesEndRef = useRef(null);
 
+  const footerPromptScrollContainerRef = useRef(null); // Reference for scrolling
+
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [showWatchMovie, setShowWatchMovie] = useState(false); // Loading state
   const [showDisplayFlicker, setShowDisplayFlicker] = useState(false); // Loading state
@@ -77,8 +79,17 @@ function Search() {
   };
 
   const executeDecreaseVolume = () => {
+    setFooterDecreaseVolumeVisible(false);
     setIsLoading(true);
-    scrollToBottom();
+    // Scroll footer prompt container to the left
+
+    if (footerPromptScrollContainerRef.current) {
+      footerPromptScrollContainerRef.current.scrollTo({
+        left: 225, // Adjust this value as needed
+        behavior: "smooth",
+      });
+    }
+
     setTimeout(() => {
       const newPromptText = "Decrease volume to 60%";
       setFooterPromptText(newPromptText);
@@ -102,10 +113,9 @@ function Search() {
   const [primarySearchVisible, setPrimarySearchVisible] = useState(true);
   const [footerSearchContainerVisible, setFooterSearchContainerVisible] =
     useState(false);
-  const [footerSearchBarVisible, setFooterSearchBarVisible] = useState(false);
-  const [footerButton1Visible, setFooterButton1Visible] = useState(false);
-  const [footerButton2Visible, setFooterButton2Visible] = useState(false);
-  const [footerButton3Visible, setFooterButton3Visible] = useState(false);
+
+  const [footerDecreaseVolumeVisible, setFooterDecreaseVolumeVisible] =
+    useState(true);
 
   useEffect(() => {
     if (isLoading || showWatchMovie) {
@@ -227,7 +237,6 @@ function Search() {
                     ? "animate-fadeSlideOutDelay2"
                     : "animate-fadeSlideInDelay1 opacity-0"
                 }`}
-                onClick={executeDecreaseVolume}
               />
               <AIPromptButton
                 label="Blur camera background"
@@ -336,12 +345,17 @@ function Search() {
         }`}
       >
         <div className="w-[740px]">
-          <div className="prompt-scroll-container  mb-6">
+          <div
+            ref={footerPromptScrollContainerRef}
+            className="prompt-scroll-container  mb-6"
+          >
             <AIPromptButton
               label="Decrease volume to 60%"
-              className={`opacity-0 ${
-                footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
-              }`}
+              className={`opacity-0 transition-all duration-300  ${
+                footerSearchContainerVisible && footerDecreaseVolumeVisible
+                  ? "animate-fadeSlideIn"
+                  : ""
+              } `}
               onClick={executeDecreaseVolume}
             />
             <AIPromptButton
