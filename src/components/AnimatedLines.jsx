@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-const AnimatedLines = ({ children }) => {
+const AnimatedLines = ({ children, delay = 0 }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +23,9 @@ const AnimatedLines = ({ children }) => {
                       node.tagName === "DIV") ||
                     node.tagName === "LI" ||
                     node.classList.contains("ai-conversation-pill") ||
-                    node.classList.contains("ai-text")
+                    node.classList.contains("ai-text") ||
+                    node.classList.contains("primary-button") ||
+                    node.classList.contains("copy-paste")
                   ) {
                     return NodeFilter.FILTER_ACCEPT;
                   }
@@ -47,12 +49,16 @@ const AnimatedLines = ({ children }) => {
               element.style.transition = "all 0.5s ease-out";
             });
 
+            const initialDelay = delay; // Delay before animation starts (in milliseconds)
+
             // Animate elements with delay
             elements.forEach((element, index) => {
               setTimeout(() => {
-                element.style.opacity = "1";
-                element.style.transform = "translateX(0)";
-              }, index * 200);
+                setTimeout(() => {
+                  element.style.opacity = "1";
+                  element.style.transform = "translateX(0)";
+                }, index * 200);
+              }, initialDelay);
             });
 
             // **Unobserve after first intersection**

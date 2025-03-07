@@ -75,18 +75,20 @@ function WatchMovie({ onClick }) {
             <div className="text-base opacity-0">
               Or you can list the ones you want activated (eg. 2-4, 6)
             </div>
+            <div
+              className={`w-full flex  justify-between ${
+                conversationStage !== 0 ? "animate-fadeSlideOut" : ""
+              }`}
+            >
+              <CopyPaste className="opacity-0" />
+              <PrimaryButton
+                className="opacity-0"
+                label="Activate all settings"
+                onClick={onActivateAllSettings}
+              />
+            </div>
           </AnimatedLines>
-          <div
-            className={`w-full flex  justify-between ${
-              conversationStage !== 0 ? "animate-fadeSlideOut" : ""
-            }`}
-          >
-            <CopyPaste />
-            <PrimaryButton
-              label="Activate all settings"
-              onClick={onActivateAllSettings}
-            />
-          </div>
+
           {conversationStage >= 1 && (
             <AnimatedLines>
               <div className="w-full flex justify-between h-12">

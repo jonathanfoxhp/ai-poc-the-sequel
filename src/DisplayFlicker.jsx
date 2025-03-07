@@ -5,7 +5,7 @@ import AIText from "./components/AIText";
 import CopyPaste from "./components/CopyPaste";
 import AnimatedLines from "./components/AnimatedLines";
 
-function DisplayFlicker({ onClick }) {
+function DisplayFlicker({ onClick, ref }) {
   const [conversationStage, setConversationStage] = useState(0);
 
   const onActivateAllSettings = () => {
@@ -23,9 +23,9 @@ function DisplayFlicker({ onClick }) {
       // className="-mt-[140px]"
       onClick={onClick}
     >
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6" ref={ref}>
         {conversationStage >= 0 && (
-          <AnimatedLines>
+          <AnimatedLines delay={1000}>
             <div className="text-base opacity-0">
               <AIText label="Display Flickering on HP Envy Laptop" />
             </div>

@@ -17,6 +17,8 @@ import AccordionRoot from "./components/AccordionRoot";
 
 function Search() {
   const messagesEndRef = useRef(null);
+  // const displayFlickerStartRef = useRef(null);
+  const decreaseVolumeStartRef = useRef(null);
 
   const footerPromptScrollContainerRef = useRef(null); // Reference for scrolling
 
@@ -40,6 +42,15 @@ function Search() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // const scrollToDisplayFlicker = () => {
+  //   console.log(displayFlickerStartRef.current);
+  //   displayFlickerStartRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
+
+  // const scrollToDecreaseVolume = () => {
+  //   decreaseVolumeStartRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   const handlePrimarySearchKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -68,14 +79,19 @@ function Search() {
 
   const executeFooterSearchPrompt = () => {
     setIsLoading(true);
-    scrollToBottom();
+    // scrollToBottom();
     setTimeout(() => {
       const newPromptText = footerPromptText;
       setFooterPromptText(newPromptText);
       setShowDisplayFlicker(true);
       setIsLoading(false);
       setAccordionValue("item-2");
+      // scrollToDisplayFlicker();
+      window.scrollBy({ top: -600, behavior: "smooth" });
     }, 2000);
+    setTimeout(() => {
+      //  scrollToDisplayFlicker();
+    }, 2500);
   };
 
   const executeDecreaseVolume = () => {
@@ -97,7 +113,11 @@ function Search() {
       setShowDecreaseVolume(true);
       setIsLoading(false);
       setAccordionValue("item-3");
+      window.scrollBy({ top: -600, behavior: "smooth" });
     }, 2000);
+    setTimeout(() => {
+      // scrollToDecreaseVolume();
+    }, 2500);
   };
 
   //not used yet
@@ -303,11 +323,15 @@ function Search() {
               />
             )}
             {showDisplayFlicker && (
-              <DisplayFlicker
-                onClick={() =>
-                  setAccordionValue(accordionValue === "item-2" ? "" : "item-2")
-                }
-              />
+              <>
+                <DisplayFlicker
+                  onClick={() =>
+                    setAccordionValue(
+                      accordionValue === "item-2" ? "" : "item-2"
+                    )
+                  }
+                />
+              </>
             )}
 
             {showDecreaseVolume && (

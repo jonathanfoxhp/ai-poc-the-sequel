@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Accordion from "./components/Accordion";
 import AIText from "./components/AIText";
@@ -7,15 +7,18 @@ import AnimatedLines from "./components/AnimatedLines";
 import PrimaryButton from "./components/PrimaryButton";
 
 function DecreaseVolume({ onClick }) {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const [conversationStage, setConversationStage] = useState(0);
 
   const enableNoiseCancellation = () => {
     console.log("enableNoiseCancellation");
     setConversationStage(1);
-  };
-
-  const onDisableToastNotifications = () => {
-    setConversationStage(2);
+    //  scrollToBottom();
   };
 
   return (
@@ -28,7 +31,7 @@ function DecreaseVolume({ onClick }) {
       <div className="flex flex-col gap-6 h-[200px]">
         {conversationStage >= 0 && (
           <>
-            <AnimatedLines>
+            <AnimatedLines delay={1000}>
               <div className="text-base opacity-0">
                 <AIText label="Decrease volume to 60%" />
               </div>
@@ -40,7 +43,7 @@ function DecreaseVolume({ onClick }) {
               </div>
 
               <div
-                className={`w-full flex  justify-between ${
+                className={`w-full flex  justify-between  ${
                   conversationStage !== 0 ? "animate-fadeSlideOut" : ""
                 }`}
               >
@@ -62,6 +65,7 @@ function DecreaseVolume({ onClick }) {
           </>
         )}
       </div>
+      <div ref={messagesEndRef} className="absolute bottom-0" />
     </Accordion>
   );
 }

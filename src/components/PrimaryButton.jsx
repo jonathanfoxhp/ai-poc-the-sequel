@@ -1,6 +1,6 @@
-function PrimaryButton({ label, ...other }) {
+function PrimaryButton({ label, className, ...other }) {
   return (
-    <button className="primary-button" {...other}>
+    <button className={`primary-button ${className}`} {...other}>
       {label}
     </button>
   );
