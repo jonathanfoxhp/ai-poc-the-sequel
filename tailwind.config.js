@@ -25,7 +25,7 @@ export default {
           },
           "100%": {
             opacity: "0",
-            display: "none",
+            maxHeight: "0px",
             backgroundColor: "transparent !important",
             color: "transparent !important",
           },
@@ -167,9 +167,9 @@ export default {
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
-        fadeOut: "fadeOut 0.5s ease-in-out 1s",
+        fadeOut: "fadeOut 0.5s ease-in-out 1s forwards",
 
-        hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s",
+        hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s forwards",
         contractFadeOut: "contractFadeOut 0.75s ease-in-out forwards",
 
         searchSlideOut:

@@ -5,8 +5,6 @@ const AnimatedLines = ({ children }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    console.log("AnimatedLines mounted, container:", containerRef.current);
-
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {

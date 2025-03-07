@@ -38,70 +38,72 @@ function WatchMovie({ onClick }) {
         value="item-1"
         onClick={onClick}
       >
-        <div className="flex flex-col gap-6">
-          {conversationStage >= 0 && (
-            <AnimatedLines>
-              <div className="text-base opacity-0">
-                <AIText label="Sure! To optimize your movie experience you can:" />
-              </div>
-              <ol className="text-base">
-                <li className="opacity-0">
-                  1. Enable{" "}
-                  <span className="font-bold">audio movie preset</span>
-                </li>
-                <li className="opacity-0">
-                  2. Turn on <span className="font-bold">surround sound</span>
-                </li>
-                <li className="opacity-0">
-                  3. Enable <span className="font-bold">immersive audio</span>
-                </li>
-                <li className="opacity-0">
-                  4. Set display{" "}
-                  <span className="font-bold">brightness to 80%</span>
-                </li>
-                <li className="opacity-0">
-                  5. Switch display preset to{" "}
-                  <span className="font-bold">movie mode</span>
-                </li>
-                <li className="opacity-0">
-                  6. Turn on display <span className="font-bold">HDR</span>
-                </li>
-              </ol>
-              <div className="text-base font-medium opacity-0">
-                Do you want me to activate all six settings?
-              </div>
-              <div className="text-base opacity-0">
-                Or you can list the ones you want activated (eg. 2-4, 6)
-              </div>
-            </AnimatedLines>
-          )}
-          {conversationStage === 0 && (
-            <div className="w-full flex  justify-between">
-              <CopyPaste />
-              <PrimaryButton
-                label="Activate all settings"
-                onClick={onActivateAllSettings}
-              />
+        <div
+          className={`flex flex-col gap-6 ${
+            conversationStage == 1 ? "!h-[560px]" : ""
+          }`}
+        >
+          <AnimatedLines>
+            <div className="text-base opacity-0">
+              <AIText label="Sure! To optimize your movie experience you can:" />
             </div>
-          )}
-
+            <ol className="text-base">
+              <li className="opacity-0">
+                1. Enable <span className="font-bold">audio movie preset</span>
+              </li>
+              <li className="opacity-0">
+                2. Turn on <span className="font-bold">surround sound</span>
+              </li>
+              <li className="opacity-0">
+                3. Enable <span className="font-bold">immersive audio</span>
+              </li>
+              <li className="opacity-0">
+                4. Set display{" "}
+                <span className="font-bold">brightness to 80%</span>
+              </li>
+              <li className="opacity-0">
+                5. Switch display preset to{" "}
+                <span className="font-bold">movie mode</span>
+              </li>
+              <li className="opacity-0">
+                6. Turn on display <span className="font-bold">HDR</span>
+              </li>
+            </ol>
+            <div className="text-base font-medium opacity-0">
+              Do you want me to activate all six settings?
+            </div>
+            <div className="text-base opacity-0">
+              Or you can list the ones you want activated (eg. 2-4, 6)
+            </div>
+          </AnimatedLines>
+          <div
+            className={`w-full flex  justify-between ${
+              conversationStage !== 0 ? "animate-fadeSlideOut" : ""
+            }`}
+          >
+            <CopyPaste />
+            <PrimaryButton
+              label="Activate all settings"
+              onClick={onActivateAllSettings}
+            />
+          </div>
           {conversationStage >= 1 && (
             <AnimatedLines>
-              <div className="w-full flex justify-between">
-                <CopyPaste className="opacity-0" />
+              <div className="w-full flex justify-between h-12">
+                <CopyPaste className="opacity-0 !delay-500" />
                 <AIConversationPill
-                  className="opacity-0"
+                  className="opacity-0 !delay-500"
                   checked
                   icon={<img src={checkMark} />}
                   label="Movie settings applied"
                 />
               </div>
-              <div className="text-base opacity-0">
+              <div className="text-base opacity-0 !delay-500">
                 <AIText label="All done! Movie mode is now activated. Here are some related recommendations" />
               </div>
               <div className="w-full flex justify-end">
                 <AIConversationPill
-                  className="opacity-0"
+                  className="opacity-0 !delay-500"
                   icon={
                     <img src={conversationStage >= 2 ? checkMark : bellSlash} />
                   }
@@ -110,17 +112,26 @@ function WatchMovie({ onClick }) {
                   onClick={onDisableToastNotifications}
                 />
               </div>
+              <div className="w-full flex justify-end">
+                <AIConversationPill
+                  className="opacity-0 !delay-500"
+                  icon={<img src={play} />}
+                  label="Recommend movies"
+                />
+              </div>
             </AnimatedLines>
           )}
           {conversationStage == 1 && (
-            <div className="w-full flex justify-end">
-              <AIConversationPill
-                icon={<img src={play} />}
-                label="Recommend movies"
-              />
-            </div>
+            <AnimatedLines>
+              <div className="w-full flex justify-end">
+                <AIConversationPill
+                  className="opacity-0 !delay-500"
+                  icon={<img src={play} />}
+                  label="Recommend movies"
+                />
+              </div>
+            </AnimatedLines>
           )}
-
           {conversationStage >= 2 && (
             <AnimatedLines>
               <AIText
