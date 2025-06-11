@@ -43,32 +43,41 @@ function Search() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // const scrollToDisplayFlicker = () => {
-  //   console.log(displayFlickerStartRef.current);
-  //   displayFlickerStartRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  // const scrollToDecreaseVolume = () => {
-  //   decreaseVolumeStartRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
-
   const handlePrimarySearchKeyDown = (e) => {
     if (e.key === "Enter") {
       executePrimarySearchPrompt();
     }
   };
 
+  const primarySearchTimeoutRef = useRef(null);
+  const footerSearchTimeoutRef = useRef(null);
+
   const executePrimarySearchPrompt = () => {
     const newPromptText = primarySearchText;
     setPrimaryPromptText(newPromptText);
-
+    setFooterSearchText(newPromptText);
     setIsLoading(true);
-    //setPrimarySearchText("");
 
-    setTimeout(() => {
+    // Store the timeout ID
+    primarySearchTimeoutRef.current = setTimeout(() => {
       setShowWatchMovie(true);
       setIsLoading(false);
     }, 3500);
+  };
+
+  const cancelPrimarySearchPrompt = () => {
+    // Clear the timeout if it exists
+    if (primarySearchTimeoutRef.current) {
+      clearTimeout(primarySearchTimeoutRef.current);
+      primarySearchTimeoutRef.current = null;
+    }
+
+    const newPromptText = "";
+    setPrimaryPromptText(newPromptText);
+    setPrimarySearchText("");
+
+    setIsLoading(false);
+    setShowWatchMovie(false);
   };
 
   const handleFooterSearchKeyDown = (e) => {
@@ -79,8 +88,17 @@ function Search() {
 
   const executeFooterSearchPrompt = () => {
     setIsLoading(true);
-    // scrollToBottom();
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   const newPromptText = footerPromptText;
+    //   setFooterPromptText(newPromptText);
+    //   setShowDisplayFlicker(true);
+    //   setIsLoading(false);
+    //   setAccordionValue("item-2");
+    //   // scrollToDisplayFlicker();
+    //   window.scrollBy({ top: -600, behavior: "smooth" });
+    // }, 2000);
+
+    footerSearchTimeoutRef.current = setTimeout(() => {
       const newPromptText = footerPromptText;
       setFooterPromptText(newPromptText);
       setShowDisplayFlicker(true);
@@ -89,11 +107,24 @@ function Search() {
       // scrollToDisplayFlicker();
       window.scrollBy({ top: -600, behavior: "smooth" });
     }, 2000);
-    setTimeout(() => {
-      //  scrollToDisplayFlicker();
-    }, 2500);
   };
 
+  const cancelFooterSearchPrompt = () => {
+    // Clear the timeout if it exists
+    if (footerSearchTimeoutRef.current) {
+      clearTimeout(footerSearchTimeoutRef.current);
+      footerSearchTimeoutRef.current = null;
+    }
+
+    const newPromptText = "";
+    setFooterPromptText(newPromptText);
+    setFooterSearchText("");
+
+    setIsLoading(false);
+    setShowDisplayFlicker(false);
+  };
+
+  //stage 3
   const executeDecreaseVolume = () => {
     setFooterDecreaseVolumeVisible(false);
     setIsLoading(true);
@@ -120,15 +151,16 @@ function Search() {
     }, 2500);
   };
 
-  //not used yet
-  // const onPromptButtonClick = (promptButtonText) => {
-  //   setPrimaryPromptText(promptButtonText);
-  //   executePrimarySearchPrompt();
-  // };
-
-  // useEffect(() => {
-  //   scrollToTop();
-  // }, [partialSettingsId]);
+  const handleFooterSearchPrimaryButtonClick = () => {
+    // Clear the timeout if it exists
+    if (!isLoading) {
+      executeFooterSearchPrompt();
+    } else if (!showWatchMovie) {
+      cancelPrimarySearchPrompt();
+    } else if (showWatchMovie) {
+      cancelFooterSearchPrompt();
+    }
+  };
 
   const [primarySearchVisible, setPrimarySearchVisible] = useState(true);
   const [footerSearchContainerVisible, setFooterSearchContainerVisible] =
@@ -146,18 +178,23 @@ function Search() {
   }, [isLoading, showWatchMovie]);
 
   useEffect(() => {
+    //here
+
+    // if (isLoading) {
+    //   // setFooterSearchText(primaryPromptText);
+    // } else {
+    //   setFooterSearchText("");
+    // }
+
+    //clear footer input logic?
+    if (showWatchMovie && !isLoading) {
+      setFooterSearchText("");
+    }
+
     if (isLoading || showWatchMovie) {
-      setTimeout(() => setFooterSearchContainerVisible(true), 3500);
-      // setTimeout(() => setFooterButton1Visible(true), 5800);
-      // setTimeout(() => setFooterButton2Visible(true), 6200);
-      // setTimeout(() => setFooterButton3Visible(true), 6600);
-      // setTimeout(() => setFooterSearchBarVisible(true), 7000);
+      setTimeout(() => setFooterSearchContainerVisible(true), 100);
     } else {
       setFooterSearchContainerVisible(false);
-      // setFooterButton1Visible(false);
-      // setFooterButton2Visible(false);
-      // setFooterButton3Visible(false);
-      // setFooterSearchBarVisible(false);
     }
   }, [isLoading, showWatchMovie]);
 
@@ -217,16 +254,7 @@ function Search() {
               )}
             </div>
           </div>
-          {/* <div
-            className={` absolute top-[212px] w-full mt-6 group ${
-              !primarySearchVisible
-                ? "animate-searchSlideOut"
-                : "animate-fadeSlideIn"
-            }`}
-          >
-            <span
-              className={`${!primarySearchVisible ? "animate-fadeOut" : ""}`}
-            > */}
+
           <SearchBar
             className={`!absolute top-[240px] w-full group ${
               !primarySearchVisible
@@ -294,7 +322,7 @@ function Search() {
           </div>
 
           <video
-            className={`video-loader absolute top-[360px]  !delay-[400ms] ${
+            className={`video-loader absolute top-[260px]  !delay-[400ms] ${
               isLoading && !showWatchMovie
                 ? "animate-fadein !duration-500"
                 : "opacity-0"
@@ -418,7 +446,7 @@ function Search() {
               value={footerSearchText}
               onChange={(e) => setFooterSearchText(e.target.value)}
               onKeyDown={handleFooterSearchKeyDown}
-              onPrimaryButtonClick={executeFooterSearchPrompt}
+              onPrimaryButtonClick={handleFooterSearchPrimaryButtonClick}
               primaryButtonDisabled={footerSearchText.length < 1}
               isLoading={isLoading}
             />
