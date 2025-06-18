@@ -192,7 +192,7 @@ function Search() {
     }
 
     if (isLoading || showWatchMovie) {
-      setTimeout(() => setFooterSearchContainerVisible(true), 100);
+      setTimeout(() => setFooterSearchContainerVisible(true), 0);
     } else {
       setFooterSearchContainerVisible(false);
     }
@@ -260,6 +260,7 @@ function Search() {
               !primarySearchVisible
                 ? "animate-contractFadeOut"
                 : "animate-fadeSlideIn"
+              //  "animate-expandFadeIn"
             }`}
             id="pb4"
             placeholder="Ask me anything about optimizing device settings..."
@@ -322,7 +323,7 @@ function Search() {
           </div>
 
           <video
-            className={`video-loader absolute top-[260px]  !delay-[400ms] ${
+            className={`video-loader absolute top-[360px]  !delay-[400ms] ${
               isLoading && !showWatchMovie
                 ? "animate-fadein !duration-500"
                 : "opacity-0"
@@ -393,7 +394,9 @@ function Search() {
 
       <div
         className={`opacity-0 footer-search ${
-          footerSearchContainerVisible ? "animate-fadeSlideInDelay3" : ""
+          footerSearchContainerVisible
+            ? "animate-fadeSlideInDelay3"
+            : "animate-fadeSlideOut"
         }`}
       >
         <div className="w-[740px]">

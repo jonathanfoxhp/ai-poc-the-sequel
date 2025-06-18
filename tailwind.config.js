@@ -114,6 +114,18 @@ export default {
           },
         },
 
+        expandFadeIn: {
+          "0%": {
+            width: "60%",
+            opacity: "0",
+          },
+
+          "100%": {
+            width: "100%",
+            opacity: "q",
+          },
+        },
+
         fadeSlideOut: {
           "0%": {
             opacity: "1",
@@ -171,6 +183,7 @@ export default {
 
         hardFadeOut: "hardFadeOut 0.25s ease-in-out 0.6s forwards",
         contractFadeOut: "contractFadeOut 0.75s ease-in-out forwards",
+        expandFadeIn: "expandFadeIn 0.75s ease-in-out forwards",
 
         searchSlideOut:
           "searchSlideOut 3.4s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards",
