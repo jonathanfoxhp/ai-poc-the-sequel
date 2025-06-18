@@ -185,9 +185,12 @@ export default {
         fadeSlideInDelay1: "fadeSlideIn 0.3125s ease-in-out 0.20s forwards",
         fadeSlideInDelay2: "fadeSlideIn 0.3125s ease-in-out 0.40s forwards",
         fadeSlideInDelay3: "fadeSlideIn 0.3125s ease-in-out 0.60s forwards",
-        fadeSlideInDelay4: "fadeSlideIn 0.3125s ease-in-out 1s forwards",
-        fadeSlideInDelay5: "fadeSlideIn 0.3125s ease-in-out 1.5s forwards",
-
+        fadeSlideInDelay4: "fadeSlideIn 0.3125s ease-in-out 0.8s forwards",
+        fadeSlideInDelay5: "fadeSlideIn 0.3125s ease-in-out 1s forwards",
+        fadeSlideInDelay6: "fadeSlideIn 0.3125s ease-in-out 1.20s forwards",
+        fadeSlideInDelay7: "fadeSlideIn 0.3125s ease-in-out 1.40s forwards",
+        fadeSlideInDelay8: "fadeSlideIn 0.3125s ease-in-out 1.60s forwards",
+        fadeSlideInDelay9: "fadeSlideIn 0.3125s ease-in-out 1.80s forwards",
         fadeSlideUpAndOut: "fadeSlideUpAndOut 0.5s ease-in-out forwards",
 
         // accordionSlideDown: "accordionSlideDown 0.1s ease-out forwards",

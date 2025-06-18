@@ -393,7 +393,7 @@ function Search() {
 
       <div
         className={`opacity-0 footer-search ${
-          footerSearchContainerVisible ? "animate-fadeSlideIn" : ""
+          footerSearchContainerVisible ? "animate-fadeSlideInDelay3" : ""
         }`}
       >
         <div className="w-[740px]">
@@ -413,32 +413,32 @@ function Search() {
             <AIPromptButton
               label="Blur camera background"
               className={`opacity-0 ${
-                footerSearchContainerVisible ? "animate-fadeSlideInDelay1" : ""
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay4" : ""
               }`}
             />
             <AIPromptButton
               label="Increase brightness to 95%"
               className={`opacity-0 ${
-                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay5" : ""
               }`}
             />
             <AIPromptButton
               label="How do I upgrade my PC?"
               className={`opacity-0 ${
-                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay6" : ""
               }`}
             />
 
             <AIPromptButton
               label="How do I speed up my games?"
               className={`opacity-0 ${
-                footerSearchContainerVisible ? "animate-fadeSlideInDelay2" : ""
+                footerSearchContainerVisible ? "animate-fadeSlideInDelay7" : ""
               }`}
             />
           </div>
           <div
             className={`w-full opacity-0 ${
-              footerSearchContainerVisible ? "animate-fadeSlideInDelay3" : ""
+              footerSearchContainerVisible ? "animate-fadeSlideInDelay8" : ""
             }`}
           >
             <SearchBar
