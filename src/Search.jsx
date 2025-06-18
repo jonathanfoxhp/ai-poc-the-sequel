@@ -323,10 +323,10 @@ function Search() {
           </div>
 
           <video
-            className={`video-loader absolute top-[360px]  !delay-[400ms] ${
+            className={`video-loader absolute top-[360px]  ${
               isLoading && !showWatchMovie
-                ? "animate-fadein !duration-500"
-                : "opacity-0"
+                ? "animate-fadein !duration-500  !delay-[400ms]"
+                : "opacity-0  !delay-[100ms]"
             }`}
             width="200px"
             autoPlay
