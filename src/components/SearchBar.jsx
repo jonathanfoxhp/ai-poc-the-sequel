@@ -26,7 +26,7 @@ function SearchBar({
         onChange={onChange}
       />
       <span className="absolute right-2 top-2 flex gap-3 searchbar-controls">
-        <img src={micOnIcon} />
+        {/* <img src={micOnIcon} /> */}
         <PrimaryIconButton
           disabled={primaryButtonDisabled}
           onClick={onPrimaryButtonClick}
